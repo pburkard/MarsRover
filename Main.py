@@ -2,13 +2,11 @@ import Controllers.RPiController as RPiController
 import logging
 import datetime
 from Classes.RaspberryPi import RaspberryPi
-import os
 
 logger = logging.getLogger('MarsRover')
 logger.setLevel(logging.DEBUG)
 
 fileName = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
-currentDir = os.getcwd()
 file = rf"Logfiles/{fileName}"
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
