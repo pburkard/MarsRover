@@ -23,13 +23,12 @@ ch.setFormatter(formatter)
 logger.addHandler(ch) 
 
 logger.debug('start main')
-
 rpi = RaspberryPi()
 
 # RPiController.testServos()
 # RPiController.testDrive()
-# RPiController.takePictures()
-RPiController.takeEnvironmentMeasurement()
+RPiController.takePictures()
+# RPiController.takeEnvironmentMeasurement()
 
 rpi.gpioCleanup()
 
