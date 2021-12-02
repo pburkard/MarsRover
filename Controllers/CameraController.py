@@ -13,12 +13,11 @@ camera = PiCamera(camera_num=0, resolution=(2560, 1440))
 camera.rotation = 180
 
 def takePicture():
-    timestamp = str(datetime.now().strftime("_%d-%m-%Y_%H:%M:%S:%f"))
-    picturePath = f"Pictures/maincam{timestamp}.jpg"
-    logger.debug(f"picture path: {picturePath}")
+    timestamp = str(datetime.now().strftime("%d-%m-%Y_%H:%M:%S:%f"))
+    picturePath = f"Pictures/MainCam_{timestamp}.jpg"
     camera.start_preview()
     camera.capture(picturePath)
-    logger.debug(f"picture taken")
+    logger.debug(f"picture taken and saved to path '{picturePath}'")
 
 def pointTo(direction):
     pulse = 0
