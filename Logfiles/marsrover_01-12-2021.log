@@ -1,0 +1,329 @@
+2021-12-01 11:49:26,572 - MarsRover - INFO - start main
+2021-12-01 11:49:26,575 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-12-01 11:49:26,576 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-12-01 11:49:26,577 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-12-01 11:50:26,061 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-12-01 11:50:26,064 - MarsRover.RaspberryPi - INFO - clean complete
+2021-12-01 11:50:26,068 - MarsRover - INFO - end of program
+2021-12-01 13:35:30,666 - MarsRover - INFO - start main
+2021-12-01 13:35:30,666 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-12-01 13:35:30,666 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-12-01 13:35:30,667 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-12-01 13:35:30,671 - MarsRover.RPiController - INFO - temperature: 23.076
+2021-12-01 13:35:30,672 - MarsRover.RPiController - INFO - humidity: 50.479
+2021-12-01 13:35:30,673 - MarsRover.RPiController - INFO - pressure: 920.795
+2021-12-01 13:35:30,673 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-12-01 13:35:30,674 - MarsRover.RaspberryPi - INFO - clean complete
+2021-12-01 13:35:30,674 - MarsRover - INFO - end of program
+2021-12-01 13:36:19,647 - MarsRover - DEBUG - start main
+2021-12-01 13:36:19,648 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:36:19,649 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:36:19,650 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:36:19,655 - MarsRover.RPiController - INFO - temperature: 23.087
+2021-12-01 13:36:19,660 - MarsRover.RPiController - INFO - humidity: 50.497
+2021-12-01 13:36:19,661 - MarsRover.RPiController - INFO - pressure: 920.901
+2021-12-01 13:36:19,661 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:36:19,662 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:36:19,662 - MarsRover - INFO - end of program
+2021-12-01 13:46:13,146 - MarsRover - DEBUG - start main
+2021-12-01 13:46:13,147 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:46:13,147 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:46:13,147 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:46:13,152 - MarsRover.BME280 - INFO - temperature: 23.117℃
+2021-12-01 13:46:13,152 - MarsRover.BME280 - INFO - humidity: 50.414％
+2021-12-01 13:46:13,153 - MarsRover.BME280 - INFO - pressure: 9.205589999999999hPa
+2021-12-01 13:46:13,154 - MarsRover.RPiController - INFO - temperature: 23.117
+2021-12-01 13:46:13,154 - MarsRover.RPiController - INFO - humidity: 50.414
+2021-12-01 13:46:13,155 - MarsRover.RPiController - INFO - pressure: 920.559
+2021-12-01 13:46:13,156 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:46:13,157 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:46:13,157 - MarsRover - DEBUG - end of program
+2021-12-01 13:46:19,205 - MarsRover - DEBUG - start main
+2021-12-01 13:46:19,206 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:46:19,206 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:46:19,206 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:46:19,210 - MarsRover.BME280 - INFO - temperature: 23.127℃
+2021-12-01 13:46:19,211 - MarsRover.BME280 - INFO - humidity: 50.42％
+2021-12-01 13:46:19,212 - MarsRover.BME280 - INFO - pressure: 9.20585hPa
+2021-12-01 13:46:19,213 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:46:19,213 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:46:19,214 - MarsRover - DEBUG - end of program
+2021-12-01 13:50:46,624 - MarsRover - DEBUG - start main
+2021-12-01 13:50:46,625 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:50:46,625 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:50:46,626 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:50:46,634 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.153 ℃
+2021-12-01 13:50:46,634 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.282 ％
+2021-12-01 13:50:46,635 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.20349 hPa
+2021-12-01 13:50:46,636 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:50:46,636 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:50:46,637 - MarsRover - DEBUG - end of program
+2021-12-01 13:51:10,932 - MarsRover - DEBUG - start main
+2021-12-01 13:51:10,932 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:51:10,932 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:51:10,933 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:51:10,937 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.153 ℃
+2021-12-01 13:51:10,938 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.33 ％
+2021-12-01 13:51:10,938 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.20401 hPa
+2021-12-01 13:51:10,939 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:51:10,939 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:51:10,939 - MarsRover - DEBUG - end of program
+2021-12-01 13:51:55,513 - MarsRover - DEBUG - start main
+2021-12-01 13:51:55,514 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:51:55,515 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:51:55,516 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:51:55,525 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.158 ℃
+2021-12-01 13:51:55,526 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.288 ％
+2021-12-01 13:51:55,527 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.20401 hPa
+2021-12-01 13:51:55,527 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:51:55,528 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:51:55,529 - MarsRover - DEBUG - end of program
+2021-12-01 13:54:20,992 - MarsRover - DEBUG - start main
+2021-12-01 13:54:20,992 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:54:20,993 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:54:20,993 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:54:20,997 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.148 ℃
+2021-12-01 13:54:20,998 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.312 ％
+2021-12-01 13:54:20,999 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.2027 hPa
+2021-12-01 13:54:20,999 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:54:21,000 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:54:21,000 - MarsRover - DEBUG - end of program
+2021-12-01 13:54:59,101 - MarsRover - DEBUG - start main
+2021-12-01 13:54:59,102 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:54:59,103 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:54:59,104 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:54:59,109 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.153 ℃
+2021-12-01 13:54:59,113 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.252 ％
+2021-12-01 13:54:59,115 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.20217 hPa
+2021-12-01 13:54:59,118 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:54:59,118 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:54:59,119 - MarsRover - DEBUG - end of program
+2021-12-01 13:56:42,023 - MarsRover - DEBUG - start main
+2021-12-01 13:56:42,024 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:56:42,024 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:56:42,025 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:56:42,033 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.153 ℃
+2021-12-01 13:56:42,034 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.156 ％
+2021-12-01 13:56:42,035 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.20086 hPa
+2021-12-01 13:56:42,036 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:56:42,036 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:56:42,037 - MarsRover - DEBUG - end of program
+2021-12-01 13:57:22,760 - MarsRover - DEBUG - start main
+2021-12-01 13:57:22,761 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:57:22,762 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:57:22,762 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:57:22,767 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.163 ℃
+2021-12-01 13:57:22,768 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.156 ％
+2021-12-01 13:57:22,768 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.200330000000001 hPa
+2021-12-01 13:57:22,769 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:57:22,770 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:57:22,770 - MarsRover - DEBUG - end of program
+2021-12-01 13:58:36,190 - MarsRover - DEBUG - start main
+2021-12-01 13:58:36,193 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 13:58:36,196 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 13:58:36,198 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 13:58:36,206 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.158 ℃
+2021-12-01 13:58:36,207 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.132 ％
+2021-12-01 13:58:36,208 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.201 hPa
+2021-12-01 13:58:36,209 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 13:58:36,210 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 13:58:36,211 - MarsRover - DEBUG - end of program
+2021-12-01 14:00:30,822 - MarsRover - DEBUG - start main
+2021-12-01 14:00:30,823 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:00:30,824 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:00:30,825 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:00:30,829 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.163 ℃
+2021-12-01 14:00:30,830 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 50.078 ％
+2021-12-01 14:00:30,830 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.2 hPa
+2021-12-01 14:00:30,831 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:00:30,831 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:00:30,832 - MarsRover - DEBUG - end of program
+2021-12-01 14:26:05,735 - MarsRover - DEBUG - start main
+2021-12-01 14:26:05,735 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:26:05,736 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:26:05,736 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:26:05,741 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.245 ℃
+2021-12-01 14:26:05,741 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.449 ％
+2021-12-01 14:26:05,742 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.195 hPa
+2021-12-01 14:26:30,698 - MarsRover - DEBUG - start main
+2021-12-01 14:26:30,699 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:26:30,699 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:26:30,700 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:26:30,708 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.24 ℃
+2021-12-01 14:26:30,709 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.401 ％
+2021-12-01 14:26:30,710 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.195 hPa
+2021-12-01 14:26:30,714 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 14:26:30,715 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:26:30,715 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:26:30,716 - MarsRover - DEBUG - end of program
+2021-12-01 14:27:09,504 - MarsRover - DEBUG - start main
+2021-12-01 14:27:09,505 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:27:09,505 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:27:09,506 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:27:09,514 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.204 ℃
+2021-12-01 14:27:09,517 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.803 ％
+2021-12-01 14:27:09,518 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.194 hPa
+2021-12-01 14:27:09,523 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 14:27:09,526 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:27:09,527 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:27:09,529 - MarsRover - DEBUG - end of program
+2021-12-01 14:33:31,603 - MarsRover - DEBUG - start main
+2021-12-01 14:33:31,606 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:33:31,609 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:33:31,612 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:33:31,622 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.22 ℃
+2021-12-01 14:33:31,623 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.485 ％
+2021-12-01 14:33:31,623 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.194 hPa
+2021-12-01 14:33:31,627 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 14:33:31,628 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:33:31,628 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:33:31,629 - MarsRover - DEBUG - end of program
+2021-12-01 14:33:41,151 - MarsRover - DEBUG - start main
+2021-12-01 14:33:41,156 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:33:41,159 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:33:41,161 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:39:50,225 - MarsRover - DEBUG - start main
+2021-12-01 14:39:50,226 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:39:50,226 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:39:50,226 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:40:20,723 - MarsRover - DEBUG - start main
+2021-12-01 14:40:20,723 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:40:20,724 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:40:20,724 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:40:20,726 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: -22.708 ℃
+2021-12-01 14:40:20,728 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 14:40:20,728 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:40:20,729 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:40:20,729 - MarsRover - DEBUG - end of program
+2021-12-01 14:40:57,913 - MarsRover - DEBUG - start main
+2021-12-01 14:40:57,914 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:40:57,914 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:40:57,915 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:40:57,917 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 14:40:57,919 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 14:40:57,919 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:40:57,920 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:40:57,921 - MarsRover - DEBUG - end of program
+2021-12-01 14:41:18,043 - MarsRover - DEBUG - start main
+2021-12-01 14:41:18,044 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:41:18,045 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:41:18,046 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:41:18,050 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.22 ℃
+2021-12-01 14:41:18,054 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 14:41:18,055 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:41:18,056 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:41:18,057 - MarsRover - DEBUG - end of program
+2021-12-01 14:41:45,876 - MarsRover - DEBUG - start main
+2021-12-01 14:41:45,877 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:41:45,877 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:41:45,878 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:41:45,880 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 14:41:45,882 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 14:41:45,882 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:41:45,882 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:41:45,883 - MarsRover - DEBUG - end of program
+2021-12-01 14:42:44,511 - MarsRover - DEBUG - start main
+2021-12-01 14:42:44,512 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:42:44,512 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:42:44,512 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:42:44,514 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.22 ℃
+2021-12-01 14:42:44,516 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 14:42:44,517 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:42:44,517 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:42:44,518 - MarsRover - DEBUG - end of program
+2021-12-01 14:49:00,351 - MarsRover - DEBUG - start main
+2021-12-01 14:49:00,351 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:49:00,353 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:49:00,353 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:49:00,355 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.23 ℃
+2021-12-01 14:49:00,357 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.527 hPa
+2021-12-01 14:49:28,692 - MarsRover - DEBUG - start main
+2021-12-01 14:49:28,693 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:49:28,694 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:49:28,694 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 14:49:28,698 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.22 ℃
+2021-12-01 14:49:28,704 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.527 hPa
+2021-12-01 14:49:28,707 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.136 ％
+2021-12-01 14:49:28,712 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 14:49:28,713 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 14:49:28,714 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 14:49:28,715 - MarsRover - DEBUG - end of program
+2021-12-01 14:50:02,712 - MarsRover - DEBUG - start main
+2021-12-01 14:50:02,713 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 14:50:02,714 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 14:50:02,715 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:04:36,765 - MarsRover - DEBUG - start main
+2021-12-01 15:04:36,765 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:04:36,766 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:04:36,766 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:04:36,768 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 15:04:36,770 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:04:36,772 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.184 ％
+2021-12-01 15:04:36,774 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 15:04:36,776 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 15:04:36,776 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 15:04:36,777 - MarsRover - DEBUG - end of program
+2021-12-01 15:05:31,906 - MarsRover - DEBUG - start main
+2021-12-01 15:05:31,907 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:05:31,908 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:05:31,909 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:05:31,914 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.214 ℃
+2021-12-01 15:05:31,918 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:05:31,921 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.088 ％
+2021-12-01 15:05:31,925 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 3
+2021-12-01 15:05:31,926 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 15:05:31,927 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 15:05:31,927 - MarsRover - DEBUG - end of program
+2021-12-01 15:08:37,777 - MarsRover - DEBUG - start main
+2021-12-01 15:08:37,783 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:08:37,785 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:08:37,787 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:08:37,792 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.235 ℃
+2021-12-01 15:08:37,797 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:08:37,801 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.052 ％
+2021-12-01 15:08:37,806 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 15:08:37,808 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 15:08:37,809 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 15:08:37,811 - MarsRover - DEBUG - end of program
+2021-12-01 15:09:13,517 - MarsRover - DEBUG - start main
+2021-12-01 15:09:13,523 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:09:13,525 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:09:13,527 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:09:13,532 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.23 ℃
+2021-12-01 15:09:13,537 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:09:13,541 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.028 ％
+2021-12-01 15:09:13,545 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 15:10:38,301 - MarsRover - DEBUG - start main
+2021-12-01 15:10:38,303 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:10:38,304 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:10:38,305 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:10:38,309 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 15:10:38,312 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:10:38,314 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.034 ％
+2021-12-01 15:10:38,317 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 15:10:38,320 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 15:10:38,322 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.225 ℃
+2021-12-01 15:10:38,325 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.034 ％
+2021-12-01 15:12:50,339 - MarsRover - DEBUG - start main
+2021-12-01 15:12:50,346 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:12:50,349 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:12:50,354 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:12:50,361 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.235 ℃
+2021-12-01 15:12:50,366 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:12:50,371 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.064 ％
+2021-12-01 15:12:50,376 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 15:12:50,381 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.235 ℃
+2021-12-01 15:12:50,387 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.235 ℃
+2021-12-01 15:12:50,391 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 49.064 ％
+2021-12-01 15:16:23,556 - MarsRover - DEBUG - start main
+2021-12-01 15:16:23,557 - MarsRover.RaspberryPi - DEBUG - init RaspberryPi
+2021-12-01 15:16:23,558 - MarsRover.RaspberryPi - DEBUG - set gpio mode to 11
+2021-12-01 15:16:23,559 - MarsRover.RaspberryPi - DEBUG - set gpio warnings to False
+2021-12-01 15:16:23,562 - MarsRover.EnvironmentHat.BME280 - INFO - temperature: 23.23 ℃
+2021-12-01 15:16:23,566 - MarsRover.EnvironmentHat.BME280 - INFO - pressure: 9.528 hPa
+2021-12-01 15:16:23,569 - MarsRover.EnvironmentHat.BME280 - INFO - humidity: 48.932 ％
+2021-12-01 15:16:23,573 - MarsRover.EnvironmentHat.LTR390 - INFO - uv: 1
+2021-12-01 15:16:23,828 - MarsRover.EnvironmentHat.SGP40 - INFO - [113, 191, 223]
+2021-12-01 15:16:23,829 - MarsRover.RaspberryPi - DEBUG - clean gpio pins
+2021-12-01 15:16:23,829 - MarsRover.RaspberryPi - DEBUG - clean complete
+2021-12-01 15:16:23,830 - MarsRover - DEBUG - end of program

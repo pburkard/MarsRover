@@ -1,0 +1,549 @@
+2021-11-03 09:22:10,721 - marsrover - INFO - start main
+2021-11-03 09:22:10,723 - marsrover - INFO - creating an instance of auxiliary_module.Auxiliary
+2021-11-03 09:22:10,723 - marsrover.test.AuxiliaryObject - INFO - creating an instance of AuxiliaryObject
+2021-11-03 09:22:10,724 - marsrover - INFO - created an instance of auxiliary_module.Auxiliary
+2021-11-03 09:22:10,724 - marsrover - INFO - calling auxiliary_module.Auxiliary.do_something
+2021-11-03 09:22:10,724 - marsrover.test.AuxiliaryObject - INFO - doing something
+2021-11-03 09:22:10,725 - marsrover.test.AuxiliaryObject - INFO - done doing something
+2021-11-03 09:22:10,725 - marsrover - INFO - finished auxiliary_module.Auxiliary.do_something
+2021-11-03 09:22:10,726 - marsrover - INFO - calling auxiliary_module.some_function()
+2021-11-03 09:22:10,727 - marsrover.test - INFO - received a call to "some_function"
+2021-11-03 09:22:10,728 - marsrover - INFO - done with auxiliary_module.some_function()
+2021-11-03 09:24:56,541 - MarsRover - INFO - start main
+2021-11-03 09:24:56,542 - MarsRover.RPIController - INFO - start test drive
+2021-11-03 09:24:57,550 - MarsRover.RPIController - INFO - start driveForward
+2021-11-03 09:24:57,551 - MarsRover.RPIController - INFO - exception thrown: Please set pin numbering mode using GPIO.setmode(GPIO.BOARD) or GPIO.setmode(GPIO.BCM)
+2021-11-03 09:24:57,551 - MarsRover.RPIController - INFO - start endOfDrive
+2021-11-03 09:29:14,422 - MarsRover - INFO - start main
+2021-11-03 09:29:14,423 - MarsRover.RPIController - INFO - start test drive
+2021-11-03 09:29:15,432 - MarsRover.RPIController - INFO - start driveForward
+2021-11-03 09:29:15,432 - MarsRover.RPIController - INFO - exception thrown: Please set pin numbering mode using GPIO.setmode(GPIO.BOARD) or GPIO.setmode(GPIO.BCM)
+2021-11-03 09:29:15,433 - MarsRover.RPIController - INFO - start endOfDrive
+2021-11-03 09:30:16,894 - MarsRover - INFO - start main
+2021-11-03 09:30:16,895 - MarsRover.RPIController.RaspberryPi - INFO - creating an instance of RaspberryPi
+2021-11-03 09:30:16,895 - MarsRover.RPIController - INFO - start test drive
+2021-11-03 09:30:17,905 - MarsRover.RPIController - INFO - start driveForward
+2021-11-03 09:30:20,912 - MarsRover.RPIController - INFO - start driveReverse
+2021-11-03 09:30:22,918 - MarsRover.RPIController - INFO - start endOfDrive
+2021-11-03 09:30:22,927 - MarsRover.RPIController.RaspberryPi - INFO - clean gpio pins
+2021-11-03 09:30:22,927 - MarsRover.RPIController.RaspberryPi - INFO - clean complete
+2021-11-03 11:08:55,279 - MarsRover - INFO - start main
+2021-11-03 11:08:55,280 - MarsRover.RPIController.RaspberryPi - INFO - creating an instance of RaspberryPi
+2021-11-03 11:08:55,280 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:08:55,281 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to False, 400
+2021-11-03 11:08:55,283 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to False, 400
+2021-11-03 11:08:55,285 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to False, 400
+2021-11-03 11:08:55,288 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to False, 400
+2021-11-03 11:08:56,291 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:08:56,291 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:08:56,294 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:08:59,299 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:08:59,300 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:08:59,303 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:09:01,309 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:09:01,309 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:09:01,311 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:09:55,107 - MarsRover - INFO - start main
+2021-11-03 11:09:55,108 - MarsRover.RPIController.RaspberryPi - INFO - creating an instance of RaspberryPi
+2021-11-03 11:09:55,108 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:09:55,109 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to False, 400
+2021-11-03 11:09:55,111 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to False, 400
+2021-11-03 11:09:55,114 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to False, 400
+2021-11-03 11:09:55,116 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to False, 400
+2021-11-03 11:09:56,119 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:09:56,120 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:09:56,123 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:09:59,129 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:09:59,130 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:09:59,132 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:10:01,137 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:10:01,137 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:10:01,139 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:10:01,141 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to False, False
+2021-11-03 11:10:01,143 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to False, False
+2021-11-03 11:10:01,146 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to False, False
+2021-11-03 11:10:01,148 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to False, False
+2021-11-03 11:10:01,150 - MarsRover.RPIController.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:10:01,150 - MarsRover.RPIController.RaspberryPi - INFO - clean complete
+2021-11-03 11:31:32,903 - MarsRover - INFO - start main
+2021-11-03 11:31:32,903 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:31:32,903 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:31:32,904 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:31:32,904 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:31:32,905 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to False, 400
+2021-11-03 11:31:32,908 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to False, 400
+2021-11-03 11:31:32,910 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to False, 400
+2021-11-03 11:31:32,912 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to False, 400
+2021-11-03 11:31:33,915 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:31:33,915 - MarsRover.MotorController - INFO - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:31:33,916 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:31:33,918 - MarsRover.MotorController - INFO - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:31:33,918 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:31:36,923 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:31:36,924 - MarsRover.MotorController - INFO - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:31:36,925 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:31:36,927 - MarsRover.MotorController - INFO - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:31:36,928 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:31:38,933 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:31:38,933 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:31:38,937 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:31:38,939 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:31:38,941 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:31:38,941 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to False, False
+2021-11-03 11:31:38,943 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to False, False
+2021-11-03 11:31:38,945 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to False, False
+2021-11-03 11:31:38,947 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to False, False
+2021-11-03 11:31:38,949 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:31:38,950 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:31:38,950 - MarsRover - INFO - end of program
+2021-11-03 11:37:09,059 - MarsRover - INFO - start main
+2021-11-03 11:37:09,060 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:37:09,060 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:37:09,061 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:37:09,061 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:37:09,062 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:09,062 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:09,063 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 100000
+2021-11-03 11:37:09,065 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:09,066 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:09,066 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 100000
+2021-11-03 11:37:09,069 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:09,069 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:09,070 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 100000
+2021-11-03 11:37:09,072 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:09,072 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:09,073 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 100000
+2021-11-03 11:37:10,076 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:37:10,076 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:37:10,077 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:37:10,079 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:37:10,080 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:37:13,085 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:37:13,086 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:37:13,087 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, 3276
+2021-11-03 11:37:13,090 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:37:13,090 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, 3276
+2021-11-03 11:37:15,095 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:37:15,095 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:37:15,099 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:37:15,101 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:37:15,103 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:37:15,103 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:15,104 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:15,104 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 0
+2021-11-03 11:37:15,106 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:15,106 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:15,107 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 0
+2021-11-03 11:37:15,109 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:15,109 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:15,110 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 0
+2021-11-03 11:37:15,112 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:15,112 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:15,113 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 0
+2021-11-03 11:37:15,115 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:37:15,115 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:37:15,116 - MarsRover - INFO - end of program
+2021-11-03 11:37:28,337 - MarsRover - INFO - start main
+2021-11-03 11:37:28,338 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:37:28,338 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:37:28,339 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:37:28,339 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:37:28,340 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:28,340 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:28,341 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 162500
+2021-11-03 11:37:28,343 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:28,344 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:28,344 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 162500
+2021-11-03 11:37:28,347 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:28,347 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:28,348 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 37500
+2021-11-03 11:37:28,351 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:28,352 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:28,352 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 37500
+2021-11-03 11:37:29,356 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:29,357 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:29,357 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 37500
+2021-11-03 11:37:29,359 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:29,360 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:29,360 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 37500
+2021-11-03 11:37:29,363 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:29,363 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:29,364 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 162500
+2021-11-03 11:37:29,366 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:29,367 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:29,368 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 162500
+2021-11-03 11:37:30,371 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:30,372 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:30,372 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 100000
+2021-11-03 11:37:30,374 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:30,375 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:30,375 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 100000
+2021-11-03 11:37:30,378 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:30,379 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:30,380 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 100000
+2021-11-03 11:37:30,382 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:30,383 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:30,384 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 100000
+2021-11-03 11:37:31,389 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:37:31,389 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,390 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,391 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 0
+2021-11-03 11:37:31,393 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,394 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,395 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 0
+2021-11-03 11:37:31,397 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,398 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,399 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 0
+2021-11-03 11:37:31,401 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,402 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,403 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 0
+2021-11-03 11:37:31,405 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:37:31,406 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:37:31,407 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:37:31,409 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:37:31,412 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:37:31,413 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,413 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,414 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 0
+2021-11-03 11:37:31,416 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,417 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,418 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 0
+2021-11-03 11:37:31,421 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,421 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,422 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 0
+2021-11-03 11:37:31,424 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:37:31,425 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:37:31,426 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 0
+2021-11-03 11:37:31,428 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:37:31,429 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:37:31,430 - MarsRover - INFO - end of program
+2021-11-03 11:39:16,085 - MarsRover - INFO - start main
+2021-11-03 11:39:16,085 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:39:16,086 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:39:16,086 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:39:16,087 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:39:16,087 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:16,088 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:16,088 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 650000
+2021-11-03 11:39:16,090 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:16,091 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:16,091 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 650000
+2021-11-03 11:39:16,093 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:16,094 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:16,094 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 150000
+2021-11-03 11:39:16,097 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:16,097 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:16,097 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 150000
+2021-11-03 11:39:17,101 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:17,101 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:17,102 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 150000
+2021-11-03 11:39:17,104 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:17,105 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:17,105 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 150000
+2021-11-03 11:39:17,108 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:17,108 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:17,109 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 650000
+2021-11-03 11:39:17,111 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:17,112 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:17,112 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 650000
+2021-11-03 11:39:18,116 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:18,116 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:18,117 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 400000
+2021-11-03 11:39:18,119 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:18,120 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:18,120 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 400000
+2021-11-03 11:39:18,123 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:18,124 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:18,124 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 400000
+2021-11-03 11:39:18,126 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:18,127 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:18,128 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 400000
+2021-11-03 11:39:19,131 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:39:19,132 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,133 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,133 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 0
+2021-11-03 11:39:19,136 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,137 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,137 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 0
+2021-11-03 11:39:19,140 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,141 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,142 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 0
+2021-11-03 11:39:19,144 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,145 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,146 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 0
+2021-11-03 11:39:19,148 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:39:19,149 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:39:19,150 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:39:19,154 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:39:19,156 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:39:19,157 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,158 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,158 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 0
+2021-11-03 11:39:19,161 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,161 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,162 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 0
+2021-11-03 11:39:19,164 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,165 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,166 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 0
+2021-11-03 11:39:19,168 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:19,169 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:19,169 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 0
+2021-11-03 11:39:19,172 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:39:19,173 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:39:19,173 - MarsRover - INFO - end of program
+2021-11-03 11:39:32,167 - MarsRover - INFO - start main
+2021-11-03 11:39:32,167 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:39:32,167 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:39:32,168 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:39:32,168 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:39:32,169 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:32,170 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:32,170 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 650
+2021-11-03 11:39:32,172 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:32,173 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:32,174 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 650
+2021-11-03 11:39:32,177 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:32,178 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:32,178 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 150
+2021-11-03 11:39:32,181 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:32,182 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:32,182 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 150
+2021-11-03 11:39:33,186 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:33,186 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:33,187 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 150
+2021-11-03 11:39:33,189 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:33,189 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:33,189 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 150
+2021-11-03 11:39:33,191 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:33,192 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:33,192 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 650
+2021-11-03 11:39:33,194 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:33,194 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:33,195 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 650
+2021-11-03 11:39:34,198 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:34,199 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:34,199 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, 400
+2021-11-03 11:39:34,201 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:34,202 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:34,203 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, 400
+2021-11-03 11:39:34,205 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:34,206 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:34,206 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, 400
+2021-11-03 11:39:34,209 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:34,209 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:34,210 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, 400
+2021-11-03 11:39:35,213 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:39:35,214 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,214 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,215 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, False
+2021-11-03 11:39:35,217 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,218 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,219 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, False
+2021-11-03 11:39:35,221 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,222 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,223 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, False
+2021-11-03 11:39:35,225 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,226 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,227 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, False
+2021-11-03 11:39:35,229 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:39:35,230 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:39:35,231 - MarsRover.PCA9685 - INFO - set pwm on channel 0 to False, False
+2021-11-03 11:39:35,233 - MarsRover.PCA9685 - INFO - set pwm on channel 1 to False, False
+2021-11-03 11:39:35,235 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:39:35,236 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,237 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,237 - MarsRover.PCA9685 - INFO - set pwm on channel 2 to 0, False
+2021-11-03 11:39:35,240 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,240 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,241 - MarsRover.PCA9685 - INFO - set pwm on channel 3 to 0, False
+2021-11-03 11:39:35,246 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,247 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,247 - MarsRover.PCA9685 - INFO - set pwm on channel 4 to 0, False
+2021-11-03 11:39:35,250 - MarsRover.MotorController - DEBUG - 16666us per period
+2021-11-03 11:39:35,251 - MarsRover.MotorController - DEBUG - 4us per bit
+2021-11-03 11:39:35,251 - MarsRover.PCA9685 - INFO - set pwm on channel 5 to 0, False
+2021-11-03 11:39:35,254 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:39:35,255 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:39:35,255 - MarsRover - INFO - end of program
+2021-11-03 11:41:33,388 - MarsRover - INFO - start main
+2021-11-03 11:41:33,389 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:41:33,389 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:41:33,390 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:41:33,390 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:41:33,391 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 650
+2021-11-03 11:41:33,393 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 650
+2021-11-03 11:41:33,396 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 150
+2021-11-03 11:41:33,398 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 150
+2021-11-03 11:41:34,402 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 150
+2021-11-03 11:41:34,404 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 150
+2021-11-03 11:41:34,406 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 650
+2021-11-03 11:41:34,408 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 650
+2021-11-03 11:41:35,411 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 400
+2021-11-03 11:41:35,413 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 400
+2021-11-03 11:41:35,415 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 400
+2021-11-03 11:41:35,418 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 400
+2021-11-03 11:41:36,421 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:41:36,422 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:41:36,424 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:41:36,427 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:41:36,430 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:41:36,432 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:41:36,433 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:41:36,434 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, False
+2021-11-03 11:41:36,436 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, False
+2021-11-03 11:41:36,439 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:41:36,440 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:41:36,442 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:41:36,445 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:41:36,448 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:41:36,450 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:41:36,451 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:41:36,452 - MarsRover - INFO - end of program
+2021-11-03 11:43:53,479 - MarsRover - INFO - start main
+2021-11-03 11:43:53,479 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:43:53,479 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:43:53,480 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:43:53,480 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:43:53,481 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 650
+2021-11-03 11:43:53,483 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 650
+2021-11-03 11:43:53,485 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 150
+2021-11-03 11:43:53,488 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 150
+2021-11-03 11:43:54,491 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 150
+2021-11-03 11:43:54,493 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 150
+2021-11-03 11:43:54,495 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 650
+2021-11-03 11:43:54,497 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 650
+2021-11-03 11:43:55,500 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 400
+2021-11-03 11:43:55,502 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 400
+2021-11-03 11:43:55,505 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 400
+2021-11-03 11:43:55,507 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 400
+2021-11-03 11:43:56,510 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:43:56,511 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:43:56,514 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:43:56,517 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:43:56,519 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:43:56,522 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:43:56,523 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:43:56,523 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, False
+2021-11-03 11:43:56,526 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, False
+2021-11-03 11:43:56,529 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:43:56,529 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:43:56,532 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:43:56,535 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:43:56,537 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:43:56,540 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:43:56,540 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 400
+2021-11-03 11:43:56,543 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 400
+2021-11-03 11:43:56,546 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 400
+2021-11-03 11:43:56,548 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 400
+2021-11-03 11:43:57,552 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:43:57,553 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:43:57,553 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, 3276
+2021-11-03 11:43:57,556 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:43:57,557 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, 3276
+2021-11-03 11:44:00,563 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:44:00,563 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:00,564 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, 3276
+2021-11-03 11:44:00,566 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:00,567 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, 3276
+2021-11-03 11:44:02,571 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:44:02,572 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:44:02,572 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, False
+2021-11-03 11:44:02,575 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, False
+2021-11-03 11:44:02,580 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:44:02,581 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:44:02,583 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:44:02,586 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:44:02,589 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:44:02,592 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:44:02,593 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:44:02,594 - MarsRover - INFO - end of program
+2021-11-03 11:44:11,578 - MarsRover - INFO - start main
+2021-11-03 11:44:11,579 - MarsRover.RaspberryPi - INFO - init RaspberryPi
+2021-11-03 11:44:11,579 - MarsRover.RaspberryPi - INFO - set gpio mode to 11
+2021-11-03 11:44:11,580 - MarsRover.RaspberryPi - INFO - set gpio warnings to False
+2021-11-03 11:44:11,580 - MarsRover.RPiController - INFO - start testServos
+2021-11-03 11:44:11,580 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 650
+2021-11-03 11:44:11,583 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 650
+2021-11-03 11:44:11,585 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 150
+2021-11-03 11:44:11,587 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 150
+2021-11-03 11:44:12,590 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 150
+2021-11-03 11:44:12,593 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 150
+2021-11-03 11:44:12,595 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 650
+2021-11-03 11:44:12,597 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 650
+2021-11-03 11:44:13,601 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 400
+2021-11-03 11:44:13,603 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 400
+2021-11-03 11:44:13,605 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 400
+2021-11-03 11:44:13,608 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 400
+2021-11-03 11:44:14,611 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:44:14,612 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:44:14,614 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:44:14,617 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:44:14,619 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:44:14,622 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:44:14,623 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:44:14,623 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, False
+2021-11-03 11:44:14,626 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, False
+2021-11-03 11:44:14,629 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:44:14,630 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:44:14,632 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:44:14,635 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:44:14,637 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:44:14,640 - MarsRover.RPiController - INFO - start test drive
+2021-11-03 11:44:14,641 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, 400
+2021-11-03 11:44:14,643 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, 400
+2021-11-03 11:44:14,646 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, 400
+2021-11-03 11:44:14,649 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, 400
+2021-11-03 11:44:15,652 - MarsRover.RPiController - INFO - start driveForward
+2021-11-03 11:44:15,653 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:15,654 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, 3276
+2021-11-03 11:44:15,657 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:15,658 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, 3276
+2021-11-03 11:44:18,664 - MarsRover.RPiController - INFO - start driveReverse
+2021-11-03 11:44:18,664 - MarsRover.MotorController - DEBUG - set front motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:18,668 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, 3276
+2021-11-03 11:44:18,671 - MarsRover.MotorController - DEBUG - set rear motors to
+ power: 0.8
+ pwm: 3276
+2021-11-03 11:44:18,672 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, 3276
+2021-11-03 11:44:20,676 - MarsRover.RPiController - INFO - start endOfDrive
+2021-11-03 11:44:20,677 - MarsRover.MotorController - INFO - start dispatchMotors
+2021-11-03 11:44:20,678 - MarsRover.PCA9685 - DEBUG - set pwm on channel 0 to False, False
+2021-11-03 11:44:20,681 - MarsRover.PCA9685 - DEBUG - set pwm on channel 1 to False, False
+2021-11-03 11:44:20,684 - MarsRover.MotorController - INFO - start dispatchServos
+2021-11-03 11:44:20,685 - MarsRover.PCA9685 - DEBUG - set pwm on channel 2 to False, False
+2021-11-03 11:44:20,687 - MarsRover.PCA9685 - DEBUG - set pwm on channel 3 to False, False
+2021-11-03 11:44:20,690 - MarsRover.PCA9685 - DEBUG - set pwm on channel 4 to False, False
+2021-11-03 11:44:20,693 - MarsRover.PCA9685 - DEBUG - set pwm on channel 5 to False, False
+2021-11-03 11:44:20,696 - MarsRover.RaspberryPi - INFO - clean gpio pins
+2021-11-03 11:44:20,697 - MarsRover.RaspberryPi - INFO - clean complete
+2021-11-03 11:44:20,697 - MarsRover - INFO - end of program
