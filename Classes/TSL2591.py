@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding:utf-8 -*-
+
 import sys
 import time
 import math
@@ -81,85 +84,85 @@ MAX_COUNT           = (65535) # 0xFFFF
 # int pin
 INI_PIN = 23
 
-class TSL2591:
-    def __init__(self, address=ADDR):
-	    self.i2c = smbus.SMBus(1)
-	    self.address = address
-	    GPIO.setmode(GPIO.BCM)
-	    GPIO.setwarnings(False)
-	    GPIO.setup(INI_PIN, GPIO.IN)
-        
-	    self.ID = self.Read_Byte(ID_REGISTER)
-	    if(self.ID != 0x50):
-		    print("ID = 0x%x"%self.ID)
-		    sys.exit()
+class TSL2591():
+	def __init__(self, address=ADDR) -> None:
+		self.i2c = smbus.SMBus(1)
+		self.address = address
+
+		GPIO.setmode(GPIO.BCM)
+		GPIO.setwarnings(False)
+		GPIO.setup(INI_PIN, GPIO.IN)
+
+		self.ID = self.Read_Byte(ID_REGISTER)
+		if(self.ID != 0x50):
+			print("ID = 0x%x"%self.ID)
+			sys.exit()
 
 		# self.Write_Byte(ENABLE_REGISTER, ENABLE_POWERON | ENABLE_AEN)
-	    self.Write_Byte(ENABLE_REGISTER, ENABLE_AIEN | ENABLE_POWERON | ENABLE_AEN | ENABLE_NPIEN)
-	    self.IntegralTime = ATIME_200MS
-	    self.Gain = MEDIUM_AGAIN
-	    self.Write_Byte(CONTROL_REGISTER, self.IntegralTime | self.Gain)
-	    self.Write_Byte(PERSIST_REGISTER, 0x01)
+		self.Write_Byte(ENABLE_REGISTER, ENABLE_AIEN | ENABLE_POWERON | ENABLE_AEN | ENABLE_NPIEN)
+		self.IntegralTime = ATIME_200MS
+		self.Gain = MEDIUM_AGAIN
+		self.Write_Byte(CONTROL_REGISTER, self.IntegralTime | self.Gain)
+		self.Write_Byte(PERSIST_REGISTER, 0x01)
 		# self.Write_Byte(0xE7, 0x13)
-	    atime = 100.0 * self.IntegralTime + 100.0
-	    again = 1.0
-	    if self.Gain == MEDIUM_AGAIN:
-		    again = 25.0
-	    elif self.Gain == HIGH_AGAIN:
-		    again = 428.0
-	    elif self.Gain == MAX_AGAIN:
-		    again = 9876.0
-	    self.Cpl = (atime * again) / LUX_DF
+		atime = 100.0 * self.IntegralTime + 100.0
+		again = 1.0
+		if self.Gain == MEDIUM_AGAIN:
+			again = 25.0
+		elif self.Gain == HIGH_AGAIN:
+			again = 428.0
+		elif self.Gain == MAX_AGAIN:
+			again = 9876.0
+		self.Cpl = (atime * again) / LUX_DF
+	
+	def Read_Byte(self, Addr):
+		Addr = (COMMAND_BIT | Addr) & 0xFF
+		return self.i2c.read_byte_data(self.address, Addr)
 
-    def Read_Byte(self, Addr):
-        Addr = (COMMAND_BIT | Addr) & 0xFF
-        return self.i2c.read_byte_data(self.address, Addr)
+	def Write_Byte(self, Addr, val):
+		Addr = (COMMAND_BIT | Addr) & 0xFF
+		self.i2c.write_byte_data(self.address, Addr, val & 0xFF)
 
-    def Write_Byte(self, Addr, val):
-        Addr = (COMMAND_BIT | Addr) & 0xFF
-        self.i2c.write_byte_data(self.address, Addr, val & 0xFF)
+	def Read_2Channel(self):
+		CH0L = self.Read_Byte(CHAN0_LOW)
+		CH0H = self.Read_Byte(CHAN0_LOW + 1)
+		CH1L = self.Read_Byte(CHAN0_LOW + 2)
+		CH1H = self.Read_Byte(CHAN0_LOW + 3)
+		full = (CH0H << 8)|CH0L
+		ir = (CH1H << 8)|CH1L
+		return full,ir
 
-    def Read_2Channel(self):
-	    CH0L = self.Read_Byte(CHAN0_LOW)
-	    CH0H = self.Read_Byte(CHAN0_LOW + 1)
-	    CH1L = self.Read_Byte(CHAN0_LOW + 2)
-	    CH1H = self.Read_Byte(CHAN0_LOW + 3)
-	    full = (CH0H << 8)|CH0L
-	    ir = (CH1H << 8)|CH1L
-	    return full,ir
-
-    def Lux(self):
-	    status = self.Read_Byte(0x13)
-	    if(status & 0x10):
+	def Lux(self):
+		status = self.Read_Byte(0x13)
+		if(status & 0x10):
 			# print ('soft goto interrupt')
-		    self.Write_Byte(0xE7, 0x13)
+			self.Write_Byte(0xE7, 0x13)
 		
 		# if(GPIO.input(INI_PIN) == 1):
 			# print("----------------")
 			# print ('hard goto interrupt')
 			
-	    full, ir = self.Read_2Channel()
-	    if full == 0xFFFF or ir == 0xFFFF:
-		    raise RuntimeError('Numerical overflow!')
+		full, ir = self.Read_2Channel()
+		if full == 0xFFFF or ir == 0xFFFF:
+			raise RuntimeError('Numerical overflow!')
 
 		# lux1 = (full - (LUX_COEFB * ir)) / self.Cpl
 		# lux2 = ((LUX_COEFC * full) - (LUX_COEFD * ir)) / self.Cpl
 		# return max(int(lux1), int(lux2))
-	    lux = ((full-ir) * (1.00 - (ir/full))) / self.Cpl
+		lux = ((full-ir) * (1.00 - (ir/full))) / self.Cpl
 		# lux = (full-ir)/ self.Cpl
-	    return lux
+		return lux
 
-    def SET_LuxInterrupt(self, SET_LOW, SET_HIGH):
-	    full, ir = self.Read_2Channel()
-	    set0dataL = int(SET_LOW * self.Cpl + ir)
-	    set0dataH = int(SET_HIGH * self.Cpl + ir)
+	def SET_LuxInterrupt(self, SET_LOW, SET_HIGH):
+		full, ir = self.Read_2Channel()
+		set0dataL = int(SET_LOW * self.Cpl + ir)
+		set0dataH = int(SET_HIGH * self.Cpl + ir)
 
-	    self.Write_Byte(AILTL_REGISTER, set0dataL & 0xFF)
-	    self.Write_Byte(AILTH_REGISTER, set0dataL >> 8)
+		self.Write_Byte(AILTL_REGISTER, set0dataL & 0xFF)
+		self.Write_Byte(AILTH_REGISTER, set0dataL >> 8)
 
-	    self.Write_Byte(AIHTL_REGISTER, set0dataH & 0xFF)
-	    self.Write_Byte(AIHTH_REGISTER, set0dataH >> 8)
-
+		self.Write_Byte(AIHTL_REGISTER, set0dataH & 0xFF)
+		self.Write_Byte(AIHTH_REGISTER, set0dataH >> 8)
 
 if __name__ == '__main__':
 	sensor = TSL2591()

@@ -1,45 +1,59 @@
-import RPi.GPIO as io
+import RPi.GPIO as RPiIO
 import logging
 
 class RaspberryPi():
-    # IN1 - IN4
     pin6 = 6
     pin13 = 13
     pin19 = 19
     pin26 = 26
+    pin23 = 23
+    pin25 = 25
 
+    IN = RPiIO.IN # 1
+    OUT = RPiIO.OUT # 0
+    LOW = RPiIO.LOW # 0
+    HIGH = RPiIO.HIGH # 1
     
-
     def __init__(self):
-        self.logger = logging.getLogger('MarsRover.RaspberryPi')
-        self.logger.debug(f'init {RaspberryPi.__name__}')
+        self.logger = logging.getLogger("MarsRover.RaspberryPi")
 
-        self.setGpioMode(io.BCM)
+        self.setGpioMode(RPiIO.BCM)
         self.setGpioWarnings(False)
 
-        io.setup(self.pin6, io.OUT)
-        io.setup(self.pin13, io.OUT)
-        io.setup(self.pin19, io.OUT)
-        io.setup(self.pin26, io.OUT)
+        # MotorController IN1 - IN4
+        self.setup(self.pin6, self.OUT)
+        self.setup(self.pin13, self.OUT)
+        self.setup(self.pin19, self.OUT)
+        self.setup(self.pin26, self.OUT)
+        self.setOutput(self.pin6, self.LOW)
+        self.setOutput(self.pin13, self.LOW)
+        self.setOutput(self.pin19, self.LOW)
+        self.setOutput(self.pin26, self.LOW)
 
-        io.output(self.pin6, io.LOW)
-        io.output(self.pin13, io.LOW)
-        io.output(self.pin19, io.LOW)
-        io.output(self.pin26, io.LOW)
-
+        # Environment Hat LUX
+        # self.setup(self.pin23, self.OUT)
+        # print("start")
+        # self.setOutput(self.pin23, self.LOW)
+        # print("end")
+    
     def gpioCleanup(self):
-        self.logger.debug(f"clean gpio pins")
-        io.output(6, False)
-        io.output(13, False)
-        io.output(19, False)
-        io.output(26, False) 
-        io.cleanup()
-        self.logger.debug('clean complete')
+        self.setOutput(self.pin6, self.LOW)
+        self.setOutput(self.pin13, self.LOW)
+        self.setOutput(self.pin19, self.LOW)
+        self.setOutput(self.pin26, self.LOW)
+        RPiIO.cleanup()
 
     def setGpioMode(self, mode):
         self.logger.debug(f'set gpio mode to {mode}')
-        io.setmode(mode)
+        RPiIO.setmode(mode)
 
     def setGpioWarnings(self, receiveWarnings):
         self.logger.debug(f'set gpio warnings to {receiveWarnings}')
-        io.setwarnings(receiveWarnings)
+        RPiIO.setwarnings(receiveWarnings)
+
+    def setOutput(self, pin, output):
+        RPiIO.output(pin, output)
+
+    def setup(self, pin, value):
+        RPiIO.setup(pin, value)
+

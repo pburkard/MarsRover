@@ -1,5 +1,3 @@
-import time
-import math
 import smbus
 import logging
 
