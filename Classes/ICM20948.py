@@ -30,6 +30,8 @@ I2C_ADD_ICM20948 = 0x68
 I2C_ADD_ICM20948_AK09916 = 0x0C
 I2C_ADD_ICM20948_AK09916_READ = 0x80
 I2C_ADD_ICM20948_AK09916_WRITE = 0x00
+
+I2C_BUS = 1 
 # define ICM-20948 Register
 # user bank 0 register
 REG_ADD_WIA = 0x00
@@ -124,9 +126,9 @@ MAG_DATA_LEN = 6
 
 
 class ICM20948(object):
-  def __init__(self, address=I2C_ADD_ICM20948):
+  def __init__(self, address=I2C_ADD_ICM20948, bus = I2C_BUS):
     self._address = address
-    self._bus = smbus.SMBus(1)
+    self._bus = smbus.SMBus(bus)
     # Initialization of the device multiple times after power on will result in a return error
     bRet = self.icm20948Check()
     # We can skip this detection by delaying it by 500 milliseconds

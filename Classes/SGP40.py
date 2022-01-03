@@ -40,12 +40,13 @@ CRC_TABLE = [
 WITHOUT_HUM_COMP = [0X26, 0X0F, 0X80, 0X00, 0XA2, 0X66, 0X66, 0X93] # default Temperature=25 Humidity=50
 WITH_HUM_COMP = [0x26, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00] #Manual input
 
-ADDR = 0x59
+I2C_ADDR = 0x59
+I2C_BUS = 1
 
 class SGP40:
-    def __init__(self, address=ADDR):
+    def __init__(self, address=I2C_ADDR, bus = I2C_BUS):
         self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{SGP40.__name__}")
-        self.i2c = smbus.SMBus(1)
+        self.i2c = smbus.SMBus(bus)
         self.address = address
         
         # feature set 0x3220

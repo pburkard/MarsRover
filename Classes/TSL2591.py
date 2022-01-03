@@ -7,7 +7,8 @@ import math
 import smbus
 import RPi.GPIO as GPIO
 
-ADDR                = (0x29)
+I2C_ADDR = (0x29)
+I2C_BUS = 1
 
 COMMAND_BIT         = (0xA0)
 #Register (0x00)
@@ -85,8 +86,8 @@ MAX_COUNT           = (65535) # 0xFFFF
 INI_PIN = 23
 
 class TSL2591():
-	def __init__(self, address=ADDR) -> None:
-		self.i2c = smbus.SMBus(1)
+	def __init__(self, address=I2C_ADDR, bus = I2C_BUS) -> None:
+		self.i2c = smbus.SMBus(bus)
 		self.address = address
 
 		GPIO.setmode(GPIO.BCM)

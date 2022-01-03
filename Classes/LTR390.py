@@ -1,7 +1,8 @@
 import smbus
 import logging
 
-ADDR  = (0X53)
+I2C_ADDR  = (0X53)
+I2C_BUS = 1
 
 LTR390_MAIN_CTRL = (0x00)  # Main control register
 LTR390_MEAS_RATE = (0x04)  # Resolution and data rate
@@ -38,9 +39,9 @@ GAIN_9 = (0x3)
 GAIN_18 = (0x4)
 
 class LTR390:
-    def __init__(self, address = ADDR) -> None:
+    def __init__(self, address = I2C_ADDR, bus = I2C_BUS) -> None:
         self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{LTR390.__name__}")
-        self.i2c = smbus.SMBus(1)
+        self.i2c = smbus.SMBus(bus)
         self.address = address
         self.Id = self._readByte(LTR390_PART_ID)
         self.logger.debug(f"Id: {self.Id}")

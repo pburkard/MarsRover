@@ -2,6 +2,7 @@ import smbus
 import logging
 
 I2C_ADDR = 0x76
+I2C_BUS = 1
 
 digT = []
 digP = []
@@ -10,9 +11,9 @@ digH = []
 t_fine = 0.0
 
 class BME280:
-	def __init__(self, address = I2C_ADDR):
+	def __init__(self, address = I2C_ADDR, bus = I2C_BUS):
 		self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{BME280.__name__}")
-		self.i2c = smbus.SMBus(1)
+		self.i2c = smbus.SMBus(bus)
 		self.address = address
 		self.calib = []
 		self.osrs_t = 1			#Temperature oversampling x 1

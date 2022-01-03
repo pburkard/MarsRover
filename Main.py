@@ -19,13 +19,7 @@ servoController = ServoController(pca9685)
 motorController = MotorController(pca9685, rpi)
 frontCamera = FrontCamera(servoController)
 distanceSensor = DistanceSensor(rpi)
-"""
-Currently its not possible to use the environment hat,
-due to a conflict of I2C Addresses: 
-The distance sensor ToF and the LUX sensor TSL2591 share the same fixed Address 0x29.
-Possible solution -> multiple I2C buses, but it seems to be not a nice way.
-"""
-# envHat = EnvironmentHat()
+envHat = EnvironmentHat()
 
 measuredDistance: float = 0.0
 runMeasurement: bool = True
@@ -38,19 +32,10 @@ def main():
     global handbreak
     try:
         takeDefaultPosition()
-
-        threadDistanceMeasurement = Thread(target=startDistanceMeasurement, args=())
-        threadDriveCoordinator = Thread(target=keepDistanceToObject, args=(35.0, 40.0))
-        threadDrive = Thread(target=driveInDistanceOfObject)
-
-        threadDistanceMeasurement.start()
-        threadDriveCoordinator.start()
-        threadDrive.start()
-
-        threadDistanceMeasurement.join()
-        threadDriveCoordinator.join()
-    except KeyboardInterrupt:
+        # startDistanceMeasurement()
+        # keepDistanceToObject()
         
+    except KeyboardInterrupt:
         handbreak = True
         sleep(1)
     finally:
@@ -117,6 +102,10 @@ def pullHandbreak():
     handbreak = True
 
 def startDistanceMeasurement():
+    threadDistanceMeasurement = Thread(target=distanceMeasurement, args=())
+    threadDistanceMeasurement.start()
+
+def distanceMeasurement():
     global measuredDistance
     global runMeasurement
     while runMeasurement:
@@ -133,7 +122,15 @@ def verticalDriveTest():
     sleep(1)
     motorController.drive(1, -0.8, WheelPosition.VERTICAL)
 
-def driveInDistanceOfObject():
+def keepDistanceToObject():
+    threadDriveCoordinator = Thread(target=coordinateDistanceToObject, args=(35.0, 40.0))
+    threadDrive = Thread(target=driveInDistanceToObject)
+    threadDriveCoordinator.start()
+    threadDrive.start()
+    threadDriveCoordinator.join()
+    threadDrive.join()
+
+def driveInDistanceToObject():
     logger.critical("start")
     global motorsEnabled
     global direction
@@ -149,7 +146,7 @@ def driveInDistanceOfObject():
                 speed = speed*(-1)
             motorController.drive(0.5, speed, WheelPosition.VERTICAL)
 
-def keepDistanceToObject(preferredDistanceMin: float, preferredDistanceMax: float):
+def coordinateDistanceToObject(preferredDistanceMin: float, preferredDistanceMax: float):
     logger.critical("start")
     global measuredDistance
     global motorsEnabled

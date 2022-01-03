@@ -8,12 +8,13 @@ from Classes.BME280 import BME280
 class EnvironmentHat():
     def __init__(self) -> None:
         self.logger = logging.getLogger("MarsRover.EnvironmentHat")
-
-        self.weatherSensor = BME280()
-        # self.lightSensor = TSL2591()
-        self.uvSensor = LTR390()
-        self.vocSensor = SGP40()
-        self.motionSensor = ICM20948()
+        
+        self.I2cBus = 3
+        self.weatherSensor = BME280(bus=self.I2cBus)
+        self.lightSensor = TSL2591(bus=self.I2cBus)
+        self.uvSensor = LTR390(bus=self.I2cBus)
+        self.vocSensor = SGP40(bus=self.I2cBus)
+        self.motionSensor = ICM20948(bus=self.I2cBus)
 
     def getTemperature(self):
         return self.weatherSensor.getTemperature()
