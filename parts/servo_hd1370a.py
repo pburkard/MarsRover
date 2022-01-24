@@ -1,6 +1,6 @@
 import logging
-from Classes.Servo import Servo
-from Classes.ServoController import PCA9685
+from parts.servo import Servo
+from servocontroller import PCA9685
 
 class HD1370A(Servo):
 

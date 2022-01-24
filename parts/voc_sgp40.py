@@ -5,6 +5,7 @@ import struct
 import smbus
 import logging
 # import ctypes
+from sensirion_gas_index_algorithm.voc_algorithm import VocAlgorithm
 
 # voc = ctypes.cdll.LoadLibrary('./voclib.so')
 
@@ -77,44 +78,58 @@ class SGP40:
     def write_block(self, cmd):
         self.i2c.write_i2c_block_data(self.address, cmd[0], cmd[1:8])
         
-    def raw(self):
-        """The raw gas value"""
-        # recycle a single buffer
-        self.write_block(WITHOUT_HUM_COMP)
-        time.sleep(0.25)
-        Rbuf = self.Read()
+    # def get_voc_default(self):
+    #     """The raw gas value"""
+    #     # recycle a single buffer
+    #     self.write_block(WITHOUT_HUM_COMP)
+    #     time.sleep(0.25)
+    #     Rbuf = self.Read()
         
-        self.logger.info(Rbuf)
+    #     self.logger.info(Rbuf)
 
-        return ((int(Rbuf[0]) << 8) | Rbuf[1])
+    #     return ((int(Rbuf[0]) << 8) | Rbuf[1])
         
-    def measureRaw(self, temperature, humidity):
-        # 2*humi + CRC
-        #paramh = struct.pack(">H", math.ceil(humidity * 0xffff / 100))
-        h = humidity * 0xffff / 100
-        paramh = (h >> 8, h & 0xff)
+    def get_voc_raw(self, temperature: int, humidity: int):
+        # link datasheet: https://media.digikey.com/pdf/Data%20Sheets/Sensirion%20PDFs/Sensirion_Gas_Sensors_Datasheet_SGP40.pdf#page=13&zoom=100,56,566
+        
+        # conversion into ticks: humitiy
+        # formula: humidity (%) * (65535/100)
+        # 0xffff -> 65535
+        humiditiy_ticks = humidity * (0xffff / 100)
+        humiditiy_ticks_rounded = int(round(humiditiy_ticks, 0))
+        paramh = (humiditiy_ticks_rounded >> 8, humiditiy_ticks_rounded & 0xff)
         crch = self.__crc(paramh[0], paramh[1])
-        
-        # 2*temp + CRC
-        #paramt = struct.pack(">H", math.ceil((temperature + 45) * 0xffff / 175))
-        t = (temperature + 45) * 0xffff / 175
-        paramt = (t >> 8, t & 0xff)
+
+        # conversion into ticks: temperature
+        # formula: (temp (C) + 45) * (65535/175)
+        # 0xffff -> 65535
+        temperature_ticks = (temperature + 45) * (0xffff / 175)
+        temperature_ticks_rounded = int(round(temperature_ticks, 0))
+        paramt = (temperature_ticks_rounded >> 8, temperature_ticks_rounded & 0xff)
         crct = self.__crc(paramt[0], paramt[1])
         
         WITH_HUM_COMP[2:3] = paramh
         WITH_HUM_COMP[4] = int(crch)
         WITH_HUM_COMP[5:6] = paramt
         WITH_HUM_COMP[7] = int(crct)
-        #print(WITH_HUM_COMP)
         self.write_block(WITH_HUM_COMP)
         
         time.sleep(0.5)
         Rbuf = self.Read()
-        # print(Rbuf)
+        data = ((int(Rbuf[0]) << 8) | Rbuf[1])
+        self.logger.info(f"volatile organic compounds: {data}")        
 
-        self.logger.info(Rbuf)
+        return data
 
-        return ((int(Rbuf[0]) << 8) | Rbuf[1])
+    def get_voc_index(self, temperature: int, humidity: int):
+        voc_raw = self.get_voc_raw(temperature, humidity)
+        voc_raw = 5000
+        voc_algorithm = VocAlgorithm()
+        for _ in range(100):
+            voc_index = voc_algorithm.process(self.get_voc_raw(temperature, humidity))
+            print(voc_index)
+            time.sleep(1)
+
         
     def __crc(self, msb, lsb):
         crc = 0xff

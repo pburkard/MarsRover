@@ -42,6 +42,10 @@ class Servo:
         self.logger.debug("move to MID")
         self.setPWM(False, self.MID)
     
+    def toCustomPWM(self, pwm: int):
+        self.logger.debug(f"move to {pwm}")
+        self.setPWM(False, pwm)
+
     def dispatch(self):
         self.logger.debug("dispatch")
         self.setPWM(False, False)

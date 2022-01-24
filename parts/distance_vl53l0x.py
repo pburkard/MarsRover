@@ -3,16 +3,14 @@ import board
 import busio
 import logging
 from time import sleep
-from Classes.RaspberryPi import RaspberryPi
+from parts.raspberrypi import RaspberryPi
 
 class DistanceSensor:
     def __init__(self, rpi: RaspberryPi):
         self.logger = logging.getLogger("MarsRover.DistanceSensor")
 
         self.rpi = rpi
-        # XSHUT
-        self.rpi.setup(self.rpi.pin25, self.rpi.OUT)
-        self.rpi.setOutput(self.rpi.pin25, self.rpi.HIGH)
+        self.rpi.setGPIO(self.rpi.TOF_XSHUT, self.rpi.OUT, self.rpi.HIGH)
 
         self.i2c = busio.I2C(board.SCL, board.SDA)
         self.sensor = adafruit_vl53l0x.VL53L0X(self.i2c)

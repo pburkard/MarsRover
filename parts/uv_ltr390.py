@@ -68,9 +68,12 @@ class LTR390:
         Data2 = self._readByte(LTR390_UVSDATA + 1)
         Data3 = self._readByte(LTR390_UVSDATA + 2)
         uv =  (Data3 << 16)| (Data2 << 8) | Data1
-        self.logger.info(f"uv: {uv}")
-        
-        # UVS = Data3*65536+Data2*256+Data1
-        # print("UVS = ", UVS)7
+        UVS = Data3*65536+Data2*256+Data1
+        self.logger.info(f"UV: {UVS}")
+        return UVS
 
-        return uv
+    # def getALS(self):
+    #     data = self._readByte(LTR390_ALSDATA)
+    #     data2 = self._readByte(LTR390_ALSDATA + 1)
+    #     data3 = self._readByte(LTR390_ALSDATA + 2)
+    #     self.logger.info(f"ALS: {data}")
