@@ -1,0 +1,379 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type=text/javascript>
+            refreshTimer = null;
+            var refreshTime = 250; // in miliseconds
+
+            // ON LOAD
+            $(function () {
+                getSensorMeasures()
+                initRefresh(refreshTime);
+            });
+
+            function onRefresh() {
+                getStatus();
+                // set new timeout
+                refreshTimer = setTimeout(onRefresh, refreshTime);
+            };
+
+            function initRefresh() {
+                if (refreshTimer)
+                    clearTimeout(refreshTimer);
+                refreshTimer = setTimeout(onRefresh, refreshTime);
+            }
+
+            function getSensorMeasures(){
+                $.ajax({
+                    type: "GET",
+                    url: $SCRIPT_ROOT + "/get_sensor_measures/",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#temperature').text(data.temperature + ' C');
+                        $('#humidity').text(data.humidity + ' %');
+                        $('#pressure').text(data.pressure + ' hPa');
+                        $('#uv').text(data.uv);
+                        $('#lux').text(data.light + ' LUX');
+                        // $('#voc').text('VOC index: ' + data.voc);
+                    }
+                });
+            }
+
+            function getStatus() {
+                $.ajax({
+                    type: "GET",
+                    url: $SCRIPT_ROOT + "/get_status/",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#speed').text(data.current_speed * 100);
+                        $('#drive_speed').text(data.drive_speed * 100 + ' %');
+                        $('#frontDistance').text(data.frontDistance + ' mm');
+                        $('#wheelPosition').text(data.wheelPosition);
+                        $('#driveDirection').text(data.driveDirection);
+                    }
+                });
+            };
+
+            var fired = false;
+
+            function keydown(url){
+                if(!fired){
+                    fired = true;
+                    $.ajax({
+                        type: "POST",
+                        url: $SCRIPT_ROOT + url,
+                        contentType: "application/json; charset=utf-8"
+                    });
+                }
+            }
+
+            function keyup(url){
+                $.ajax({
+                    type: "POST",
+                    url: $SCRIPT_ROOT + url,
+                    contentType: "application/json; charset=utf-8"
+                });
+                fired = false;
+            }
+
+            // The browser window should not move by pressing an arrow key.
+            window.addEventListener("keydown", function (e) {
+                // space and arrow keys
+                if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                    e.preventDefault();
+                }
+            }, false);
+
+            window.addEventListener("keydown", function (event){
+                key = event.key
+                switch (key) {
+                    case "ArrowUp":
+                        keydown("/forward_start/");
+                        break;
+                    case "ArrowDown":
+                        keydown("/reverse_start/");
+                        break;
+                    default:
+                    return; // Quit when this doesn't handle the key event.
+                }
+            })
+
+            window.addEventListener("keyup", function (event){
+                key = event.key
+                switch (key) {
+                    case "ArrowUp":
+                        keyup("/stop/");
+                        break;
+                    case "ArrowDown":
+                        keyup("/stop/");
+                        break;
+                    case "y":
+                        keyup("/wheel_position/VERTICAL");
+                        break;
+                    case "x":
+                        keyup("/wheel_position/HORIZONTAL");
+                        break;
+                    case "c":
+                        keyup("/wheel_position/CIRCULAR");
+                        break;
+                    case "a":
+                        keyup("/point_front_camera/0");
+                        break;
+                    case "s":
+                        keyup("/point_front_camera/45");
+                        break;
+                    case "d":
+                        keyup("/point_front_camera/90");
+                        break;
+                    case "f":
+                        keyup("/point_front_camera/135");
+                        break;
+                    case "g":
+                        keyup("/point_front_camera/180");
+                        break;
+                    case "q":
+                        getSensorMeasures();
+                        break;
+                    case "w":
+                        keyup("/start_distance_measure/");
+                        break;
+                    case "o":
+                        keyup("/shutdown/");
+                        break;
+                    case "p":
+                        keyup("/reboot/");
+                        break;
+                    case "e":
+                        imageOnclick()
+                        break;
+                    case "r":
+
+                        break;
+                    default:
+                    return; // Quit when this doesn't handle the key event.
+                }
+            })
+
+            /* Copyright (C) 2007 Richard Atterer, richardĀ©atterer.net
+            This program is free software; you can redistribute it and/or modify it
+            under the terms of the GNU General Public License, version 2. See the file
+            COPYING for details. */
+
+            var imageNr = 0; // Serial number of current image
+            var finished = new Array(); // References to img objects which have finished downloading
+            var paused = false;
+
+            function createImageLayer() {
+                var img = new Image();
+                img.style.position = "absolute";
+                img.style.zIndex = -1;
+                img.onload = imageOnload;
+                img.onclick = imageOnclick;
+                img.src = "http://p-raspberrypi:8080/?action=snapshot&n=" + (++imageNr);
+                var webcam = document.getElementById("webcam");
+                webcam.insertBefore(img, webcam.firstChild);
+            }
+
+            // Two layers are always present (except at the very beginning), to avoid flicker
+            function imageOnload() {
+                this.style.zIndex = imageNr; // Image finished, bring to front!
+                while (1 < finished.length) {
+                    var del = finished.shift(); // Delete old image(s) from document
+                    del.parentNode.removeChild(del);
+                }
+                finished.push(this);
+                if (!paused) createImageLayer();
+            }
+
+            function imageOnclick() { // Clicking on the image will pause the stream
+                paused = !paused;
+                if (!paused) createImageLayer();
+            }
+
+            // var slider = document.getElementById("myRange");
+            // var output = document.getElementById("speed");
+            // // output.innerHTML = slider.value; // Display the default slider value
+
+            // // Update the current slider value (each time you drag the slider handle)
+            // slider.oninput = function() {
+            //     output.innerHTML = this.value;
+            // }
+        </script>
+
+<style>
+    .webcam {
+        height: 640px;
+        width: 800px;
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .slidecontainer {
+        width: 100%; /* Width of the outside container */
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        width: 25%; /* Full-width */
+        height: 25px; /* Specified height */
+        background: #d3d3d3; /* Grey background */
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background: #04AA6D; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background: #04AA6D; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
+</style>
+
+<div class="container">
+    <h1 class="text-center">{{ title }}</h1>
+    <div id="webcam" class="webcam">
+        <noscript>
+            <img src="./?action=snapshot" />
+        </noscript>
+    </div>
+    </br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Speed</th>
+                <th>Front Distance</th>
+                <th>Wheel Position</th>
+                <th>Drive Direction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="speed"></td>
+                <td id="frontDistance"></td>
+                <td id="wheelPosition"></td>
+                <td id="driveDirection"></td>
+            </tr>
+        </tbody>
+    </table>
+    </br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Pressure</th>
+                <th>UV</th>
+                <th>LUX</th>
+                <!-- <th>VOC</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="temperature"></td>
+                <td id="humidity"></td>
+                <td id="pressure"></td>
+                <td id="uv"></td>
+                <td id="lux"></td>
+                <!-- <td id="voc"></td> -->
+            </tr>
+        </tbody>
+    </table>
+    </br>
+    <div class="slidecontainer">
+        <p id="drive_speed"></p>
+        <input type="range"  min="1" max="100" value="50" class="slider" id="speedslider">
+    </div>
+    </br>
+    <div class="text-center">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px">
+            View Keyboard Controls
+        </button>
+        </br>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Control</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">ArrowUp / ArrowDown</th>
+                            <td>Drive</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Y</th>
+                            <td>Wheel Position VERTICAL</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">X</th>
+                            <td>Wheel Position HORIZONTAL</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C</th>
+                            <td>Wheel Position CIRCULAR</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">A / S / D / F / G --> D is center</th>
+                            <td>Camera Position</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Q</th>
+                            <td>Update Sensor Data</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">W</th>
+                            <td>Start/Stop Distance Measure</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">E</th>
+                            <td>Stop Camera Stream</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">O</th>
+                            <td>Shutdown Raspberry Pi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">P</th>
+                            <td>Reboot Raspberry Pi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var slider = document.getElementById("speedslider");
+    var value = slider.value;
+    slider.oninput = function() {
+        value = this.value;
+        keyup("/set_speed/" + value);
+        $("#drive_speed").innerHTML = "Drive Speed: " + value;
+    }
+</script>
+{% endblock %}

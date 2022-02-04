@@ -1,0 +1,101 @@
+2022-01-28 14:15:52,637 - DEBUG - MarsRover.RaspberryPi - set_mode - set gpio mode to 11
+2022-01-28 14:15:52,640 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN1: 6>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,641 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN2: 13>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,642 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN3: 19>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,643 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN4: 26>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,645 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN1: 12>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,646 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN2: 16>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,647 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN3: 20>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,648 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN4: 21>, <PinSignalState.LOW: 0>
+2022-01-28 14:15:52,649 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.DISTANCE_XSHUT: 25>, <PinSignalState.HIGH: 1>
+2022-01-28 14:20:54,770 - DEBUG - MarsRover.RaspberryPi - set_mode - set gpio mode to 11
+2022-01-28 14:20:54,770 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN1: 6>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,771 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN2: 13>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,772 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN3: 19>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,772 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN4: 26>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,773 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN1: 12>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,773 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN2: 16>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,774 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN3: 20>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,774 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN4: 21>, <PinSignalState.LOW: 0>
+2022-01-28 14:20:54,775 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.DISTANCE_XSHUT: 25>, <PinSignalState.HIGH: 1>
+2022-01-28 14:22:09,540 - DEBUG - MarsRover.RaspberryPi - set_mode - set gpio mode to 11
+2022-01-28 14:22:09,544 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN1: 6>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,545 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN2: 13>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,546 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN3: 19>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,546 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC1_IN4: 26>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,547 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN1: 12>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,548 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN2: 16>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,548 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN3: 20>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,549 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.MC2_IN4: 21>, <PinSignalState.LOW: 0>
+2022-01-28 14:22:09,550 - DEBUG - MarsRover.RaspberryPi - init_output - init output <Pin.DISTANCE_XSHUT: 25>, <PinSignalState.HIGH: 1>
+2022-01-28 14:22:10,790 - INFO - MarsRover.FrontCamera - point - point to 90 degrees
+2022-01-28 14:22:10,791 - DEBUG - MarsRover.HD1370A.CS1 - to_mid - move to MID
+2022-01-28 14:22:10,791 - DEBUG - MarsRover.HD1370A.CS1 - setPWM - set pwm on channel 6 (CS1) to False, 450
+2022-01-28 14:22:11,094 - CRITICAL - MarsRover - <module> - START
+2022-01-28 14:22:11,095 - CRITICAL - MarsRover - <module> - mode: TESTBED
+2022-01-28 14:22:11,396 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN2: 13> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:11,396 - DEBUG - MarsRover.MotorController - setMotor - set motor M1 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:11,398 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN3: 19> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:11,399 - DEBUG - MarsRover.MotorController - setMotor - set motor M2 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:11,401 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN2: 16> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:11,402 - DEBUG - MarsRover.MotorController - setMotor - set motor M3 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:11,404 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN3: 20> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:11,405 - DEBUG - MarsRover.MotorController - setMotor - set motor M4 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:13,410 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN1: 6> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,410 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN2: 13> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,411 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN3: 19> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,411 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN4: 26> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,412 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN1: 12> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,412 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN2: 16> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,412 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN3: 20> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,413 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN4: 21> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:13,421 - DEBUG - MarsRover.ServoController - setdriveservos - set driveservos to CIRCULAR
+2022-01-28 14:22:13,421 - DEBUG - MarsRover.MG996R.DS1 - custom_pwm - move to 550
+2022-01-28 14:22:13,422 - DEBUG - MarsRover.MG996R.DS1 - setPWM - set pwm on channel 5 (DS1) to False, 550
+2022-01-28 14:22:13,424 - DEBUG - MarsRover.MG996R.DS2 - custom_pwm - move to 250
+2022-01-28 14:22:13,424 - DEBUG - MarsRover.MG996R.DS2 - setPWM - set pwm on channel 4 (DS2) to False, 250
+2022-01-28 14:22:13,426 - DEBUG - MarsRover.MG996R.DS3 - custom_pwm - move to 250
+2022-01-28 14:22:13,427 - DEBUG - MarsRover.MG996R.DS3 - setPWM - set pwm on channel 3 (DS3) to False, 250
+2022-01-28 14:22:13,429 - DEBUG - MarsRover.MG996R.DS4 - custom_pwm - move to 550
+2022-01-28 14:22:13,430 - DEBUG - MarsRover.MG996R.DS4 - setPWM - set pwm on channel 2 (DS4) to False, 550
+2022-01-28 14:22:14,433 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN1: 6> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:14,434 - DEBUG - MarsRover.MotorController - setMotor - set motor M1 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:14,436 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN3: 19> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:14,436 - DEBUG - MarsRover.MotorController - setMotor - set motor M2 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:14,439 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN1: 12> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:14,439 - DEBUG - MarsRover.MotorController - setMotor - set motor M3 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:14,441 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN3: 20> to <PinSignalState.HIGH: 1>
+2022-01-28 14:22:14,442 - DEBUG - MarsRover.MotorController - setMotor - set motor M4 to speed: 0.4 pwm: 1638
+2022-01-28 14:22:15,445 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN1: 6> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,446 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN2: 13> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,446 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN3: 19> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,446 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN4: 26> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,446 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN1: 12> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,447 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN2: 16> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,447 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN3: 20> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,447 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN4: 21> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,454 - INFO - MarsRover.EnvironmentHat.BME280 - getTemperature - temperature: 23.716 ℃
+2022-01-28 14:22:15,455 - INFO - MarsRover.EnvironmentHat.BME280 - getHumidity - humidity: 45.696 ％
+2022-01-28 14:22:15,457 - INFO - MarsRover.EnvironmentHat.BME280 - getPressure - pressure: 9.844 hPa
+2022-01-28 14:22:15,458 - INFO - MarsRover.EnvironmentHat.LTR390 - getUV - UV: 3
+2022-01-28 14:22:15,459 - DEBUG - MarsRover.MG996R.DS1 - dispatch - dispatch
+2022-01-28 14:22:15,460 - DEBUG - MarsRover.MG996R.DS1 - setPWM - set pwm on channel 5 (DS1) to False, False
+2022-01-28 14:22:15,463 - DEBUG - MarsRover.MG996R.DS2 - dispatch - dispatch
+2022-01-28 14:22:15,463 - DEBUG - MarsRover.MG996R.DS2 - setPWM - set pwm on channel 4 (DS2) to False, False
+2022-01-28 14:22:15,465 - DEBUG - MarsRover.MG996R.DS3 - dispatch - dispatch
+2022-01-28 14:22:15,466 - DEBUG - MarsRover.MG996R.DS3 - setPWM - set pwm on channel 3 (DS3) to False, False
+2022-01-28 14:22:15,468 - DEBUG - MarsRover.MG996R.DS4 - dispatch - dispatch
+2022-01-28 14:22:15,469 - DEBUG - MarsRover.MG996R.DS4 - setPWM - set pwm on channel 2 (DS4) to False, False
+2022-01-28 14:22:15,471 - DEBUG - MarsRover.HD1370A.CS1 - dispatch - dispatch
+2022-01-28 14:22:15,471 - DEBUG - MarsRover.HD1370A.CS1 - setPWM - set pwm on channel 6 (CS1) to False, False
+2022-01-28 14:22:15,473 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN1: 6> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,474 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN2: 13> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,474 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN3: 19> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,475 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC1_IN4: 26> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,475 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN1: 12> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,476 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN2: 16> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,476 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN3: 20> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,476 - DEBUG - MarsRover.RaspberryPi - set_signal_state - set <Pin.MC2_IN4: 21> to <PinSignalState.LOW: 0>
+2022-01-28 14:22:15,484 - DEBUG - MarsRover.RaspberryPi - cleanup_all - cleanup all
+2022-01-28 14:22:15,484 - CRITICAL - MarsRover - <module> - END 
+------------------------------------------------------------------
