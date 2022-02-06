@@ -10,7 +10,7 @@ if(__name__ == '__main__'):
     rover.logger.critical('START')
     rover.logger.critical(f'mode: {StartMode.WEBCONTROL.name}')
     try:
-        rover.takeDefaultPosition()
+        rover.take_default_position()
         # run flask app
         app.run(host='0.0.0.0', port=8181)
     except KeyboardInterrupt:

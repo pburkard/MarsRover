@@ -6,16 +6,13 @@ from threading import Thread
 from marsrovercore.enums import DriveDirection, WheelPosition
 
 class MarsRover():
-    # CONSTANTS & DEFAULTS
     DEFAULT_SPEED = 0.5
     DEFAULT_DRIVE_DIRECTION = DriveDirection.FORWARD
     DEFAULT_WHEEL_POSITION = WheelPosition.VERTICAL
     SECS_UNTIL_360_TURN: float = 5.25
 
-    # Main Properties
     current_speed: float = 0.0
     drive_speed: float = DEFAULT_SPEED
-    motors_enabled: bool = True
     drive_direction: DriveDirection = DEFAULT_DRIVE_DIRECTION
     wheel_position: WheelPosition = DEFAULT_WHEEL_POSITION
 
@@ -27,7 +24,7 @@ class MarsRover():
         from controllers.sensorcontroller import SensorController
         from Adafruit_PCA9685 import PCA9685
 
-        self.logger = self.createLogger(logging.DEBUG)
+        self.logger = self.create_logger(logging.DEBUG)
         self.pca9685 = PCA9685()
         self.pca9685.set_pwm_freq(60)
         self.gpio = GPIO()
@@ -40,7 +37,7 @@ class MarsRover():
 
         self.keep_distance_stopped: bool = True
 
-    def createLogger(self, levelConsole) -> logging.Logger:
+    def create_logger(self, levelConsole) -> logging.Logger:
         logger = logging.getLogger("MarsRover")
         logger.setLevel(logging.DEBUG)
         formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(funcName)s - %(message)s")
@@ -76,10 +73,17 @@ class MarsRover():
     def pull_handbreak(self):
         self.logger.critical("pull handbreak")
         # stop all threads
-        self.sensorcontroller.distance_measure_stop()
-        self.keep_distance_stop()
+        wait_for_threads = False
+        if not self.sensorcontroller.distance_measure_stopped:
+            wait_for_threads = True
+            self.sensorcontroller.distance_measure_stop()
+        if not self.keep_distance_stopped:
+            wait_for_threads = True
+            self.keep_distance_stop()
+        if wait_for_threads:
+            sleep(1)
         # stop motors and servos
-        self.stopdrive()
+        self.stop_drive()
         self.servocontroller.dispatch_drive_servos()
         self.front_camera.dispatch_servo()
         
@@ -88,34 +92,37 @@ class MarsRover():
             self.keep_distance_stopped = True
     
     def keep_distance_start(self):
+        motors_enabled: bool = True
         def keep_distance():
-            self.takeDefaultPosition()
+            self.take_default_position()
             while True:
                 if self.keep_distance_stopped:
                     break
-                if self.motors_enabled:
+                if motors_enabled:
                     self.start_drive()
                 else:
-                    self.stopdrive()
+                    self.stop_drive()
 
         def coordinate_distance(preferredDistanceMin: float, preferredDistanceMax: float):
+            nonlocal motors_enabled
             while not self.keep_distance_stopped:
-                if(preferredDistanceMax < self.distance_front):
+                distance_front = self.sensorcontroller.distance_front
+                if(preferredDistanceMax < distance_front):
                     self.logger.debug("too far from object")
                     # drive forward
                     self.drive_direction = DriveDirection.FORWARD
-                    self.motors_enabled = True
-                elif(preferredDistanceMin > self.distance_front):
+                    motors_enabled = True
+                elif(preferredDistanceMin > distance_front):
                     self.logger.debug("too close to object")
                     # drive reverse
                     self.drive_direction = DriveDirection.REVERSE
-                    self.motors_enabled = True
-                elif(preferredDistanceMin <= self.distance_front and preferredDistanceMax >= self.distance_front):
+                    motors_enabled = True
+                elif(preferredDistanceMin <= distance_front and preferredDistanceMax >= distance_front):
                     self.logger.debug("in preferred distance to object")
                     # stop drive
-                    self.motors_enabled = False
+                    motors_enabled = False
                 else:
-                    self.logger.debug(f"measured distance: {self.distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
+                    self.logger.debug(f"measured distance: {distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
                     raise Exception("VERY wrong")
                 sleep(0.2)
         
@@ -131,7 +138,7 @@ class MarsRover():
         else:
             self.logger.warning("keep distance is already running")
 
-    def takeDefaultPosition(self):
+    def take_default_position(self):
         self.setwheelposition(self.DEFAULT_WHEEL_POSITION)
         self.front_camera.point(90)
     
@@ -147,8 +154,13 @@ class MarsRover():
             
             if duration > 0:
                 sleep(duration)
-                self.stopdrive()
+                self.stop_drive()
 
+    def stop_drive(self):
+        if self.current_speed > 0:
+            self.motorcontroller.dispatch_all()
+            self.current_speed = 0
+    
     def turn(self, to_angle: int):
         self.setwheelposition(WheelPosition.CIRCULAR)
         temp_speed = self.drive_speed
@@ -156,14 +168,6 @@ class MarsRover():
         secs = self.SECS_UNTIL_360_TURN / 360 * to_angle
         self.start_drive(duration=secs)
         self.drive_speed = temp_speed
-
-    def stopdrive(self):
-        if self.current_speed > 0:
-            self.motorcontroller.dispatch_all()
-            self.current_speed = 0
-    
-    def cleanup(self):
-        self.gpio.cleanup_all()
 
     def shutdown():
         os.system("sudo halt &")

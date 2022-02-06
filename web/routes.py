@@ -44,7 +44,7 @@ def reverse_start():
 
 @app.route('/stop/', methods=['POST'])
 def stop():
-    rover.stopdrive()
+    rover.stop_drive()
     ret_data = {"value": "stop"}
     return jsonify(ret_data)
 

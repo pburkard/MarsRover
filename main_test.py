@@ -8,7 +8,7 @@ from time import sleep
 rover: MarsRover
 
 def drivetest():
-    rover.takeDefaultPosition()
+    rover.take_default_position()
     rover.drive_direction = DriveDirection.FORWARD
     rover.start_drive(duration=2)
     rover.setwheelposition(WheelPosition.CIRCULAR)
@@ -18,11 +18,11 @@ def sensortest():
     print(rover.sensorcontroller.get_meteo_light_measures(round_measure_by=4))
 
 def wheelpositiontest():
-    rover.takeDefaultPosition()
+    rover.take_default_position()
     for position in WheelPosition:
         rover.setwheelposition(position)
         sleep(0.5)
-    rover.takeDefaultPosition()
+    rover.take_default_position()
 
 def calibrate_horizontal_position():
     rover.setwheelposition(WheelPosition.HORIZONTAL)
@@ -39,7 +39,7 @@ def calibrate_distance_vl53l0x():
     rover.start_distance_measure()
 
 def drive_square_test(timePerSide):
-    rover.takeDefaultPosition()
+    rover.take_default_position()
     rover.drive_speed = 0.6
     # vertical/horizontal
     rover.drive_direction = DriveDirection.FORWARD
