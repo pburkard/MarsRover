@@ -14,13 +14,12 @@ if(__name__ == '__main__'):
         # run flask app
         app.run(host='0.0.0.0', port=8181, debug=False)
     except KeyboardInterrupt:
-        rover.pullHandbreak()
+        rover.pull_handbreak()
         sleep(1)
     except Exception as ex:
         rover.logger.exception(ex)
-        rover.pullHandbreak()
-        sleep(1)
+        rover.pull_handbreak()
     finally:
-        rover.cleanup()
-        rover.logger.critical('END \n------------------------------------------------------------------')
+        rover.gpio.cleanup_all()
+    rover.logger.critical('END \n------------------------------------------------------------------')
 

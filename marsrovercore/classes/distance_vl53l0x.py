@@ -1,3 +1,4 @@
+from threading import Thread
 import adafruit_vl53l0x
 import board
 import busio
@@ -12,7 +13,7 @@ class DistanceSensor:
 
     def get_distance(self):
         distance = self.sensor.range
-        self.logger.info(f"distance measure: {distance}mm")
+        self.logger.debug(f"distance measure: {distance}mm")
         return distance
 
 

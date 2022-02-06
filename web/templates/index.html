@@ -46,10 +46,10 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         $('#speed').text(data.current_speed * 100);
-                        $('#drive_speed').text(data.drive_speed * 100 + ' %');
-                        $('#frontDistance').text(data.frontDistance + ' mm');
-                        $('#wheelPosition').text(data.wheelPosition);
-                        $('#driveDirection').text(data.driveDirection);
+                        $('#driveSpeed').text(data.drive_speed * 100 + ' %');
+                        $('#frontDistance').text(data.front_distance + ' mm');
+                        $('#wheelPosition').text(data.wheel_position);
+                        $('#driveDirection').text(data.drive_direction);
                     }
                 });
             };
@@ -198,7 +198,7 @@
             // slider.oninput = function() {
             //     output.innerHTML = this.value;
             // }
-        </script>
+</script>
 
 <style>
     .webcam {
@@ -301,7 +301,7 @@
     </table>
     </br>
     <div class="slidecontainer">
-        <p id="drive_speed"></p>
+        <p id="driveSpeed"></p>
         <input type="range"  min="1" max="100" value="50" class="slider" id="speedslider">
     </div>
     </br>
@@ -373,7 +373,7 @@
     slider.oninput = function() {
         value = this.value;
         keyup("/set_speed/" + value);
-        $("#drive_speed").innerHTML = "Drive Speed: " + value;
+        $("#driveSpeed").innerHTML = "Drive Speed: " + value;
     }
 </script>
 {% endblock %}

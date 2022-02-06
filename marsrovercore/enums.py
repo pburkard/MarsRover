@@ -9,6 +9,8 @@ class DriveDirection(Enum):
    NONE = 0
    FORWARD = 1
    REVERSE = 2
+   TURN_LEFT = 1
+   TURN_RIGHT = 2
 
 class StartMode(Enum):
    AUTONOMOUS = 0

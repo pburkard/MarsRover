@@ -30,14 +30,14 @@ def reboot():
    
 @app.route('/forward_start/', methods=['POST'])
 def forward_start():
-    rover.driveDirection = DriveDirection.FORWARD
+    rover.drive_direction = DriveDirection.FORWARD
     rover.start_drive()
     ret_data = {"value": "forward start"}
     return jsonify(ret_data)
       
 @app.route('/reverse_start/', methods=['POST'])
 def reverse_start():
-    rover.driveDirection = DriveDirection.REVERSE
+    rover.drive_direction = DriveDirection.REVERSE
     rover.start_drive()
     ret_data = {"value": "reverse stop"}
     return jsonify(ret_data)

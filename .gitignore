@@ -1,3 +1,4 @@
-pictures/..
-logfiles/..
 testing
+logfiles/*
+pictures/*
+*.pyc
