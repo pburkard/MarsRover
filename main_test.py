@@ -36,7 +36,7 @@ def calibrate_circular_turn():
     rover.start_drive(duration=5.25)
 
 def calibrate_distance_vl53l0x():
-    rover.start_distance_measure()
+    rover.sensorcontroller.distance_measure_start()
 
 def drive_square_test(timePerSide):
     rover.take_default_position()
@@ -69,12 +69,17 @@ if(__name__ == '__main__'):
 
     try:
         rover.keep_distance_start()
+        while True:
+            rover.front_camera.point(45)
+            sleep(2)
+            rover.front_camera.point(135)
+            sleep(2)
     except KeyboardInterrupt:
         rover.logger.critical("exit triggered by KEYBOARDINTERRUPT")
-        rover.pull_handbreak()
     except Exception as ex:
         rover.logger.critical("exit triggered by EXCEPTION")
         rover.logger.exception(ex)
     finally:
+        rover.pull_handbreak()
         rover.gpio.cleanup_all()
     rover.logger.critical('END \n------------------------------------------------------------------')

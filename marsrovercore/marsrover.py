@@ -32,10 +32,15 @@ class MarsRover():
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
         self.sensorcontroller = SensorController(i2c_bus=3)
         self.front_camera = FrontCamera(camera_enabled, self.servocontroller)
+        
+        self.distance_measure_thread: Thread = None
+        self.measurment_in_range: bool = True
+        self.keep_distance_stopped: bool = True
+        self.keep_distance_coordinate_thread: Thread = None
+        self.keep_distance_drive_thread: Thread = None
+
         # set default wheel position
         self.servocontroller.set_drive_servos(self.DEFAULT_WHEEL_POSITION)
-
-        self.keep_distance_stopped: bool = True
 
     def create_logger(self, levelConsole) -> logging.Logger:
         logger = logging.getLogger("MarsRover")
@@ -73,75 +78,84 @@ class MarsRover():
     def pull_handbreak(self):
         self.logger.critical("pull handbreak")
         # stop all threads
-        wait_for_threads = False
-        if not self.sensorcontroller.distance_measure_stopped:
-            wait_for_threads = True
-            self.sensorcontroller.distance_measure_stop()
-        if not self.keep_distance_stopped:
-            wait_for_threads = True
-            self.keep_distance_stop()
-        if wait_for_threads:
-            sleep(1)
+        self.keep_distance_stop()
+        self.distance_measure_stop()
         # stop motors and servos
         self.stop_drive()
         self.servocontroller.dispatch_drive_servos()
         self.front_camera.dispatch_servo()
         
-    def keep_distance_stop(self):
-        if self.keep_distance_stopped == False:
-            self.keep_distance_stopped = True
-    
-    def keep_distance_start(self):
-        motors_enabled: bool = True
-        def keep_distance():
-            self.take_default_position()
-            while True:
-                if self.keep_distance_stopped:
-                    break
-                if motors_enabled:
-                    self.start_drive()
-                else:
-                    self.stop_drive()
+    def keep_distance_drive(self):
+        self.take_default_position()
+        while True:
+            if self.keep_distance_stopped:
+                break
+            if self.measurment_in_range:
+                self.start_drive()
+            else:
+                self.stop_drive()
 
-        def coordinate_distance(preferredDistanceMin: float, preferredDistanceMax: float):
-            nonlocal motors_enabled
-            while not self.keep_distance_stopped:
-                distance_front = self.sensorcontroller.distance_front
-                if(preferredDistanceMax < distance_front):
-                    self.logger.debug("too far from object")
-                    # drive forward
-                    self.drive_direction = DriveDirection.FORWARD
-                    motors_enabled = True
-                elif(preferredDistanceMin > distance_front):
-                    self.logger.debug("too close to object")
-                    # drive reverse
-                    self.drive_direction = DriveDirection.REVERSE
-                    motors_enabled = True
-                elif(preferredDistanceMin <= distance_front and preferredDistanceMax >= distance_front):
-                    self.logger.debug("in preferred distance to object")
-                    # stop drive
-                    motors_enabled = False
-                else:
-                    self.logger.debug(f"measured distance: {distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
-                    raise Exception("VERY wrong")
-                sleep(0.2)
-        
+    def keep_distance_coordinate(self, preferredDistanceMin: float, preferredDistanceMax: float):
+        while not self.keep_distance_stopped:
+            distance_front = self.sensorcontroller.distance_front
+            if(preferredDistanceMax < distance_front):
+                self.logger.debug("too far from object")
+                # drive forward
+                self.drive_direction = DriveDirection.FORWARD
+                self.measurment_in_range = True
+            elif(preferredDistanceMin > distance_front):
+                self.logger.debug("too close to object")
+                # drive reverse
+                self.drive_direction = DriveDirection.REVERSE
+                self.measurment_in_range = True
+            elif(preferredDistanceMin <= distance_front and preferredDistanceMax >= distance_front):
+                self.logger.debug("in preferred distance to object")
+                # stop drive
+                self.measurment_in_range = False
+            else:
+                self.logger.debug(f"measured distance: {distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
+                raise Exception("VERY wrong")
+            sleep(0.1)
+
+    def keep_distance_start(self):
         if self.keep_distance_stopped == True:
             self.keep_distance_stopped = False
-            self.sensorcontroller.distance_measure_start()
-            threadDriveCoordinator = Thread(target=coordinate_distance, args=(200.0, 300.0), name="DistanceCoordinator")
-            threadDrive = Thread(target=keep_distance, name="DistanceKeeper")
-            threadDriveCoordinator.start()
-            threadDrive.start()
-            threadDriveCoordinator.join()
-            threadDrive.join()
+            self.distance_measure_start()
+            sleep(0.1) # wait until first distance measurement is available
+            self.keep_distance_coordinate_thread = Thread(target=self.keep_distance_coordinate, args=(200.0, 300.0), name="DistanceCoordinator")
+            self.keep_distance_drive_thread = Thread(target=self.keep_distance_drive, name="DistanceKeeper")
+            self.keep_distance_coordinate_thread.start()
+            self.keep_distance_drive_thread.start()
         else:
             self.logger.warning("keep distance is already running")
+    
+    def keep_distance_stop(self):
+        if not self.keep_distance_stopped:
+            self.keep_distance_stopped = True
+            self.keep_distance_coordinate_thread.join()
+            self.keep_distance_drive_thread.join()
+
+    def distance_measure_start(self):
+        if self.sensorcontroller.distance_measure_stopped:
+            self.sensorcontroller.distance_measure_stopped = False
+            self.distance_measure_thread = Thread(target=self.sensorcontroller.continuous_distance_measure, name="ContinuousDistanceMeasure")
+            self.distance_measure_thread.start()
+        else:
+            self.logger.warning("distance measure already running")
+
+    def distance_measure_stop(self):
+        if not self.sensorcontroller.distance_measure_stopped:
+            self.sensorcontroller.distance_measure_stopped = True
+            self.distance_measure_thread.join()
+            self.sensorcontroller.distance_front = 0.0
 
     def take_default_position(self):
-        self.setwheelposition(self.DEFAULT_WHEEL_POSITION)
-        self.front_camera.point(90)
-    
+        def take_default_position2():
+            self.setwheelposition(self.DEFAULT_WHEEL_POSITION)
+            self.front_camera.point(90)
+        thread = Thread(target=take_default_position2, name="TakeDefaultPosition")
+        thread.start()
+
     def setwheelposition(self, position: WheelPosition):
         if not position == self.wheel_position:
             self.servocontroller.set_drive_servos(position)

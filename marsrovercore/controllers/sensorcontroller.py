@@ -49,25 +49,24 @@ class SensorController():
     def get_distance_front(self) -> float:
         return self.distance_sensor.get_distance()
 
-    def distance_measure_start(self) -> Thread:
-        self.logger.debug("start distance measure")
-        if self.distance_measure_stopped == True:
-            self.distance_measure_stopped = False
-            distance_measurement_thread = Thread(target=self.continuous_distance_measure, name="DistanceMeasurement")
-            distance_measurement_thread.start()
-            return distance_measurement_thread
-        else:
-            self.logger.warning("distance measure already running")
-            return None
+    # def distance_measure_start(self) -> Thread:
+    #     self.logger.debug("start distance measure")
+    #     if self.distance_measure_stopped == True:
+    #         self.distance_measure_stopped = False
+    #         distance_measurement_thread = Thread(target=self.continuous_distance_measure, name="DistanceMeasurement")
+    #         distance_measurement_thread.start()
+    #         return distance_measurement_thread
+    #     else:
+    #         self.logger.warning("distance measure already running")
+    #         return None
 
-    def distance_measure_stop(self):
-        self.logger.debug("stopp distance measure")
-        self.distance_measure_stopped = True
+    # def distance_measure_stop(self):
+    #     self.logger.debug("stopp distance measure")
+    #     self.distance_measure_stopped = True
         
     def continuous_distance_measure(self):
         while True:
             if self.distance_measure_stopped:
-                self.distance_front = 0.0
                 break
             self.distance_front = self.get_distance_front()
         
