@@ -5,7 +5,6 @@ from time import sleep
 from threading import Thread
 from marsrovercore.enums import DriveDirection, WheelPosition
 
-
 class MarsRover():
     # CONSTANTS & DEFAULTS
     DEFAULT_SPEED = 0.5
@@ -85,7 +84,6 @@ class MarsRover():
         self.stopdrive()
         self.servocontroller.dispatch_drive_servos()
         self.front_camera.dispatch_servo()
-        
         
     def keep_distance_stop(self):
         if self.keep_distance_stopped == False:
