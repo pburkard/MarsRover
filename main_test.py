@@ -58,15 +58,20 @@ def drive_square_test(timePerSide):
         rover.drive_direction = DriveDirection.TURN_LEFT
         rover.turn(90)
 
+def take_picture():
+    rover.front_camera.point(45)
+    rover.front_camera.take_picture()
+
 if(__name__ == '__main__'):
     rover = MarsRover(camera_enabled=False)
+    # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
+    # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
 
     rover.logger.critical('START')
     rover.logger.critical(f'mode: {StartMode.TESTBED.name}')
 
     try:
         print("")
-        drivetest()
     except KeyboardInterrupt:
         rover.logger.critical("exit triggered by KEYBOARDINTERRUPT")
     except Exception as ex:

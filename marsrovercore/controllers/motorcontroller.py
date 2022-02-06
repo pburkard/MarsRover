@@ -17,20 +17,21 @@ class MotorController():
       self.pca = pca9685
       self.gpio = gpio
    
-   def set_motor(self, motor: ServoDriverChannel, motorcontroller_input_1:Pin, motorcontroller_input_2:Pin, speed: float, direction: MotorDirection):
+   def set_motor(self, motor: ServoDriverChannel, motordriver_IN1:Pin, motordriver_IN2:Pin, speed: float, direction: MotorDirection):
       gpio = self.gpio
-
+      if speed <= 0.0 and speed > 1.0:
+         self.logger.error(f"speed value has to be >0.0 and <=1.0. Given value: {speed}")
       if direction == MotorDirection.POSITIVE:
-         gpio.set_signal_state(motorcontroller_input_1, PinSignalState.HIGH)
-      elif direction == MotorDirection.NEGATIVE:
-         gpio.set_signal_state(motorcontroller_input_2, PinSignalState.HIGH)
-      
-      if speed > 0.0 and speed <= 1.0:
-         pwm = int(self.DC * speed)
-         self.logger.debug(f"set motor {motor.name} to speed: {speed} pwm: {pwm}")
-         self.pca.set_pwm(motor.value, False, pwm)
+         gpio.set_signal_state(motordriver_IN1, PinSignalState.HIGH)
+      else:
+         # motordirection NEGATIVE
+         gpio.set_signal_state(motordriver_IN2, PinSignalState.HIGH)
+      pwm = int(self.DC * speed)
+      self.logger.debug(f"set motor {motor.name} to speed: {speed} pwm: {pwm}")
+      self.pca.set_pwm(motor.value, False, pwm)
 
-   def setallmotors(self, drivedirection: DriveDirection, wheelposition: WheelPosition, speed: float):
+   def set_all_motors(self, drivedirection: DriveDirection, wheelposition: WheelPosition, speed: float):
+      # motor driver motor x
       mdm1: MotorDirection = MotorDirection.NEGATIVE
       mdm2: MotorDirection = MotorDirection.POSITIVE
       mdm3: MotorDirection = MotorDirection.NEGATIVE

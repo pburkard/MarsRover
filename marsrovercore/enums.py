@@ -6,7 +6,6 @@ class WheelPosition(Enum):
    CIRCULAR = 2
 
 class DriveDirection(Enum):
-   NONE = 0
    FORWARD = 1
    REVERSE = 2
    TURN_LEFT = 1

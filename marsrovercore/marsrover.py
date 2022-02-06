@@ -20,18 +20,18 @@ class MarsRover():
         from classes.gpio import GPIO
         from controllers.servocontroller import ServoController
         from controllers.motorcontroller import MotorController
-        from classes.front_camera import FrontCamera
+        from marsrovercore.classes.camera import Camera
         from controllers.sensorcontroller import SensorController
         from Adafruit_PCA9685 import PCA9685
 
-        self.logger = self.create_logger(logging.DEBUG)
+        self.logger = self.create_logger(logging.INFO)
         self.gpio = GPIO()
         self.pca9685 = PCA9685()
         self.pca9685.set_pwm_freq(60)
         self.servocontroller = ServoController(self.pca9685)
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
         self.sensorcontroller = SensorController(i2c_bus=3)
-        self.front_camera = FrontCamera(camera_enabled, self.servocontroller)
+        self.front_camera = Camera(camera_enabled, self.servocontroller)
         
         self.distance_measure_thread: Thread = None
         self.measurment_in_range: bool = True
@@ -59,6 +59,7 @@ class MarsRover():
         try:
             fh = logging.FileHandler(file)
             fh.setFormatter(formatter)
+            fh.setLevel(logging.DEBUG)
             logger.addHandler(fh)
         except Exception:
             logger.error("failed to add filehandler")
@@ -164,7 +165,7 @@ class MarsRover():
 
     def start_drive(self, duration: float = 0):
         if self.current_speed == 0:
-            self.motorcontroller.setallmotors(self.drive_direction, self.wheel_position, self.drive_speed)
+            self.motorcontroller.set_all_motors(self.drive_direction, self.wheel_position, self.drive_speed)
             self.current_speed = self.drive_speed
             
             if duration > 0:

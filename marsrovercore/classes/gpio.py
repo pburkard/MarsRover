@@ -4,8 +4,8 @@ from marsrovercore.enums import Pin, PinSignalDirection, PinSignalState
 
 class GPIO():
     def __init__(self):
-        self.logger = logging.getLogger("MarsRover.RaspberryPi")
-
+        self.logger = logging.getLogger("MarsRover.GPIO")
+        self.cleanup_all()
         self.set_mode(GPIO_.BCM)
         self.set_warnings(True)
 
@@ -21,9 +21,6 @@ class GPIO():
         self.init_output(Pin.MC2_IN3)
         self.init_output(Pin.MC2_IN4)
 
-        # Environment hat light sensor
-        # self.init_input(Pin.ENVH_LIGHT)
-
         # Distance sensor
         self.init_output(Pin.DISTANCE_XSHUT, signal_state=PinSignalState.HIGH)
     
@@ -36,7 +33,6 @@ class GPIO():
         GPIO_.cleanup(pins)
 
     def set_mode(self, mode):
-        self.logger.debug(f'set gpio mode to {mode}')
         GPIO_.setmode(mode)
 
     def set_warnings(self, receiveWarnings:bool):
