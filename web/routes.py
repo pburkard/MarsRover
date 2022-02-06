@@ -66,12 +66,12 @@ def point_front_camera(degree):
 @app.route('/start_distance_measure/', methods=['POST'])
 def start_distance_measure():
     state: str
-    if rover.distancemeasure_running:
-        rover.stop_distance_measure()
-        state = "stop"
-    else:
-        rover.start_distance_measure()
+    if rover.sensorcontroller.distance_measure_stopped:
+        rover.sensorcontroller.distance_measure_start()
         state = "start"
+    else:
+        rover.sensorcontroller.distance_measure_stop()
+        state = "stop"
     ret_data = {"value": f"{state} distance measure"}
     return jsonify(ret_data)
 

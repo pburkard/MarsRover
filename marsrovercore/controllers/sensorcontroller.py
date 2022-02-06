@@ -20,7 +20,7 @@ class SensorController():
         self.motionSensor = ICM20948(bus=i2c_bus)
         self.distance_sensor = DistanceSensor()
 
-        
+        self.distance_front: float = 0.0
         self.distance_measure_stopped: bool = True
 
     def get_lux(self) -> float:
@@ -49,7 +49,7 @@ class SensorController():
     def get_distance_front(self) -> float:
         return self.distance_sensor.get_distance()
 
-    def start_distance_measure(self) -> Thread:
+    def distance_measure_start(self) -> Thread:
         self.logger.debug("start distance measure")
         if self.distance_measure_stopped == True:
             self.distance_measure_stopped = False
@@ -60,16 +60,16 @@ class SensorController():
             self.logger.warning("distance measure already running")
             return None
 
-    def stop_distance_measure(self):
+    def distance_measure_stop(self):
         self.logger.debug("stopp distance measure")
         self.distance_measure_stopped = True
-        MarsRover.distance_front = 0
         
     def continuous_distance_measure(self):
         while True:
             if self.distance_measure_stopped:
+                self.distance_front = 0.0
                 break
-            MarsRover.distance_front = self.get_distance_front()
+            self.distance_front = self.get_distance_front()
         
     def get_meteo_light_measures(self, round_measure_by: int = None) -> dict:
         temp = self.get_temperature()

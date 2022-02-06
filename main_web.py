@@ -12,10 +12,9 @@ if(__name__ == '__main__'):
     try:
         rover.takeDefaultPosition()
         # run flask app
-        app.run(host='0.0.0.0', port=8181, debug=False)
+        app.run(host='0.0.0.0', port=8181)
     except KeyboardInterrupt:
         rover.pull_handbreak()
-        sleep(1)
     except Exception as ex:
         rover.logger.exception(ex)
         rover.pull_handbreak()

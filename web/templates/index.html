@@ -45,9 +45,13 @@
                     url: $SCRIPT_ROOT + "/get_status/",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        $('#speed').text(data.current_speed * 100);
+                        $('#currentSpeed').text(data.current_speed * 100);
                         $('#driveSpeed').text(data.drive_speed * 100 + ' %');
-                        $('#frontDistance').text(data.front_distance + ' mm');
+                        if(data.front_distance == 0.0){
+                            $('#frontDistance').text('sensor turned off');
+                        } else {
+                            $('#frontDistance').text(data.front_distance + ' mm');
+                        }
                         $('#wheelPosition').text(data.wheel_position);
                         $('#driveDirection').text(data.drive_direction);
                     }
@@ -251,7 +255,7 @@
 </style>
 
 <div class="container">
-    <h1 class="text-center">{{ title }}</h1>
+    <h1 class="text-center display-2">{{ title }}</h1>
     <div id="webcam" class="webcam">
         <noscript>
             <img src="./?action=snapshot" />
@@ -261,7 +265,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Speed</th>
+                <th>Current Speed</th>
+                <th>Set Drive Speed</th>
                 <th>Front Distance</th>
                 <th>Wheel Position</th>
                 <th>Drive Direction</th>
@@ -269,7 +274,8 @@
         </thead>
         <tbody>
             <tr>
-                <td id="speed"></td>
+                <td id="currentSpeed"></td>
+                <td id="driveSpeed"></td>
                 <td id="frontDistance"></td>
                 <td id="wheelPosition"></td>
                 <td id="driveDirection"></td>
@@ -301,8 +307,8 @@
     </table>
     </br>
     <div class="slidecontainer">
-        <p id="driveSpeed"></p>
-        <input type="range"  min="1" max="100" value="50" class="slider" id="speedslider">
+        <p>Drive Speed: <span id="driveSpeedConfig">60</span> %</p>
+        <input type="range"  min="1" max="100" value="60" class="slider" id="speedInput">
     </div>
     </br>
     <div class="text-center">
@@ -368,12 +374,13 @@
     </div>
 </div>
 <script>
-    var slider = document.getElementById("speedslider");
+    var slider = document.getElementById("speedInput");
     var value = slider.value;
+    slider.onchange = function() {
+        keyup("/set_speed/" + this.value);
+    }
     slider.oninput = function() {
-        value = this.value;
-        keyup("/set_speed/" + value);
-        $("#driveSpeed").innerHTML = "Drive Speed: " + value;
+        $("#driveSpeedConfig").text(this.value);
     }
 </script>
 {% endblock %}

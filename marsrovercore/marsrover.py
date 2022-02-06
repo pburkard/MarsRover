@@ -15,9 +15,7 @@ class MarsRover():
     # Main Properties
     current_speed: float = 0.0
     drive_speed: float = DEFAULT_SPEED
-    distance_front: float = 0.0
-    distancemeasure_running: bool = False
-    motorsEnabled: bool = True
+    motors_enabled: bool = True
     drive_direction: DriveDirection = DEFAULT_DRIVE_DIRECTION
     wheel_position: WheelPosition = DEFAULT_WHEEL_POSITION
 
@@ -68,7 +66,7 @@ class MarsRover():
         status_dict = {
             "current_speed": self.current_speed,
             "drive_speed": self.drive_speed,
-            "front_distance": self.distance_front,
+            "front_distance": self.sensorcontroller.distance_front,
             "drive_direction": self.drive_direction.name,
             "wheel_position": self.wheel_position.name,
             "camera_position": self.front_camera.current_position
@@ -78,7 +76,7 @@ class MarsRover():
     def pull_handbreak(self):
         self.logger.critical("pull handbreak")
         # stop all threads
-        self.sensorcontroller.stop_distance_measure()
+        self.sensorcontroller.distance_measure_stop()
         self.keep_distance_stop()
         # stop motors and servos
         self.stopdrive()
@@ -95,7 +93,7 @@ class MarsRover():
             while True:
                 if self.keep_distance_stopped:
                     break
-                if self.motorsEnabled:
+                if self.motors_enabled:
                     self.start_drive()
                 else:
                     self.stopdrive()
@@ -106,16 +104,16 @@ class MarsRover():
                     self.logger.debug("too far from object")
                     # drive forward
                     self.drive_direction = DriveDirection.FORWARD
-                    self.motorsEnabled = True
+                    self.motors_enabled = True
                 elif(preferredDistanceMin > self.distance_front):
                     self.logger.debug("too close to object")
                     # drive reverse
                     self.drive_direction = DriveDirection.REVERSE
-                    self.motorsEnabled = True
+                    self.motors_enabled = True
                 elif(preferredDistanceMin <= self.distance_front and preferredDistanceMax >= self.distance_front):
                     self.logger.debug("in preferred distance to object")
                     # stop drive
-                    self.motorsEnabled = False
+                    self.motors_enabled = False
                 else:
                     self.logger.debug(f"measured distance: {self.distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
                     raise Exception("VERY wrong")
@@ -123,7 +121,7 @@ class MarsRover():
         
         if self.keep_distance_stopped == True:
             self.keep_distance_stopped = False
-            self.sensorcontroller.start_distance_measure()
+            self.sensorcontroller.distance_measure_start()
             threadDriveCoordinator = Thread(target=coordinate_distance, args=(200.0, 300.0), name="DistanceCoordinator")
             threadDrive = Thread(target=keep_distance, name="DistanceKeeper")
             threadDriveCoordinator.start()
