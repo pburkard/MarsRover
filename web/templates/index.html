@@ -139,7 +139,10 @@
                         getSensorMeasures();
                         break;
                     case "w":
-                        keyup("/start_distance_measure/");
+                        keyup("/distance_measure/");
+                        break;
+                    case "t":
+                        keyup("/keep_distance/");
                         break;
                     case "o":
                         keyup("/shutdown/");
@@ -149,9 +152,6 @@
                         break;
                     case "e":
                         imageOnclick()
-                        break;
-                    case "r":
-
                         break;
                     default:
                     return; // Quit when this doesn't handle the key event.

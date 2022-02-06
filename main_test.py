@@ -8,17 +8,14 @@ from time import sleep
 rover: MarsRover
 
 def drivetest():
-    rover.take_default_position()
     rover.drive_direction = DriveDirection.FORWARD
+    rover.drive_speed = 1
     rover.start_drive(duration=2)
-    rover.setwheelposition(WheelPosition.CIRCULAR)
-    rover.start_drive(duration=1)
 
 def sensortest():
     print(rover.sensorcontroller.get_meteo_light_measures(round_measure_by=4))
 
 def wheelpositiontest():
-    rover.take_default_position()
     for position in WheelPosition:
         rover.setwheelposition(position)
         sleep(0.5)
@@ -68,12 +65,8 @@ if(__name__ == '__main__'):
     rover.logger.critical(f'mode: {StartMode.TESTBED.name}')
 
     try:
-        rover.keep_distance_start()
-        while True:
-            rover.front_camera.point(45)
-            sleep(2)
-            rover.front_camera.point(135)
-            sleep(2)
+        print("")
+        drivetest()
     except KeyboardInterrupt:
         rover.logger.critical("exit triggered by KEYBOARDINTERRUPT")
     except Exception as ex:

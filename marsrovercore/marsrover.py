@@ -17,17 +17,17 @@ class MarsRover():
     wheel_position: WheelPosition = DEFAULT_WHEEL_POSITION
 
     def __init__(self, camera_enabled: bool):
+        from classes.gpio import GPIO
         from controllers.servocontroller import ServoController
         from controllers.motorcontroller import MotorController
-        from classes.gpio import GPIO
         from classes.front_camera import FrontCamera
         from controllers.sensorcontroller import SensorController
         from Adafruit_PCA9685 import PCA9685
 
         self.logger = self.create_logger(logging.DEBUG)
+        self.gpio = GPIO()
         self.pca9685 = PCA9685()
         self.pca9685.set_pwm_freq(60)
-        self.gpio = GPIO()
         self.servocontroller = ServoController(self.pca9685)
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
         self.sensorcontroller = SensorController(i2c_bus=3)
@@ -89,6 +89,7 @@ class MarsRover():
         self.take_default_position()
         while True:
             if self.keep_distance_stopped:
+                self.stop_drive()
                 break
             if self.measurment_in_range:
                 self.start_drive()
