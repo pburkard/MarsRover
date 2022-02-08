@@ -16,6 +16,10 @@ def get_status():
 def get_sensor_measures(): 
     return jsonify(rover.sensorcontroller.get_meteo_light_measures(round_measure_by=1))
 
+# @app.route('/get_motion_measures/', methods=['GET'])
+# def get_motion_measures(): 
+#     return jsonify(rover.sensorcontroller.get_motion_measures())
+
 @app.route('/shutdown/', methods=['POST'])
 def shutdown():
     rover.shutdown()
@@ -52,7 +56,6 @@ def stop():
 def wheelposition(position):
     wheelposition: WheelPosition = WheelPosition[position]
     rover.setwheelposition(wheelposition)
-
     ret_data = {"value": f"{wheelposition.name} wheel position"}
     return jsonify(ret_data)
 
@@ -66,7 +69,7 @@ def point_front_camera(degree):
 @app.route('/distance_measure/', methods=['POST'])
 def distance_measure():
     state: str
-    if not rover.distance_measure_thread.is_alive():
+    if not rover.sensorcontroller.distance_measure_stopped:
         rover.distance_measure_start()
         state = "start"
     else:

@@ -1,13 +1,11 @@
 import logging
-from threading import Thread
 from time import sleep
 from classes.light_tsl2591 import TSL2591
-# from classes.voc_sgp40 import SGP40
+# from classes.voc_sgp40_2 import SGP40
 from classes.uv_ltr390 import LTR390
 from classes.motion_icm20948 import ICM20948
 from classes.weather_bme280 import BME280
 from classes.distance_vl53l0x import DistanceSensor
-from marsrovercore.marsrover import MarsRover
 
 class SensorController():
     def __init__(self, i2c_bus: int) -> None:
@@ -17,7 +15,7 @@ class SensorController():
         self.lightSensor = TSL2591(bus=i2c_bus)
         self.uvSensor = LTR390(bus=i2c_bus)
         # self.vocSensor = SGP40(i2c_bus)
-        self.motionSensor = ICM20948(bus=i2c_bus)
+        # self.motionSensor = ICM20948(bus=i2c_bus)
         self.distance_sensor = DistanceSensor()
 
         self.distance_front: float = 0.0
@@ -43,34 +41,37 @@ class SensorController():
     #     hum = int(round(self.get_humidity(), 0))
     #     # self.vocSensor.get_voc_index(temp, hum)
     #     return 100
-
-    #TODO: implement motion sensing
+    
+    def get_motion_measures(self):
+        data = self.motionSensor.getdata()
+        motion_dict = {
+            "roll": data[0],
+            "pitch": data[1],
+            "yaw": data[2],
+            "accel_x": data[3],
+            "accel_y": data[4],
+            "accel_z": data[5],
+            "gyro_x": data[6],
+            "gyro_y": data[7],
+            "gyro_z": data[8],
+            "mag_x": data[9],
+            "mag_y": data[10],
+            "mag_z": data[11]
+        }
+        self.logger.info(motion_dict)
+        return motion_dict
 
     def get_distance_front(self) -> float:
         return self.distance_sensor.get_distance()
-
-    # def distance_measure_start(self) -> Thread:
-    #     self.logger.debug("start distance measure")
-    #     if self.distance_measure_stopped == True:
-    #         self.distance_measure_stopped = False
-    #         distance_measurement_thread = Thread(target=self.continuous_distance_measure, name="DistanceMeasurement")
-    #         distance_measurement_thread.start()
-    #         return distance_measurement_thread
-    #     else:
-    #         self.logger.warning("distance measure already running")
-    #         return None
-
-    # def distance_measure_stop(self):
-    #     self.logger.debug("stopp distance measure")
-    #     self.distance_measure_stopped = True
         
     def continuous_distance_measure(self):
         while True:
             if self.distance_measure_stopped:
                 break
             self.distance_front = self.get_distance_front()
+            # sleep(0.1)
         
-    def get_meteo_light_measures(self, round_measure_by: int = None) -> dict:
+    def get_meteo_light_measures(self, round_measure_by: int = -1) -> dict:
         temp = self.get_temperature()
         hum = self.get_humidity()
         press = self.get_pressure()

@@ -1,15 +1,17 @@
 import logging
 import datetime
 import os
-from time import sleep
+from time import sleep, time
 from threading import Thread
 from marsrovercore.enums import DriveDirection, WheelPosition
+import marsrovercore.logginghelper as logginghelper
 
 class MarsRover():
     DEFAULT_SPEED = 0.5
     DEFAULT_DRIVE_DIRECTION = DriveDirection.FORWARD
     DEFAULT_WHEEL_POSITION = WheelPosition.VERTICAL
-    SECS_UNTIL_360_TURN: float = 5.25
+    SECS_UNTIL_360_TURN: float = 4.5
+    MIN_DISTANCE_TO_OBJECT: float = 80
 
     current_speed: float = 0.0
     drive_speed: float = DEFAULT_SPEED
@@ -24,7 +26,7 @@ class MarsRover():
         from controllers.sensorcontroller import SensorController
         from Adafruit_PCA9685 import PCA9685
 
-        self.logger = self.create_logger(logging.INFO)
+        self.logger = logginghelper.get_logger("Core")
         self.gpio = GPIO()
         self.pca9685 = PCA9685()
         self.pca9685.set_pwm_freq(60)
@@ -34,36 +36,37 @@ class MarsRover():
         self.front_camera = Camera(camera_enabled, self.servocontroller)
         
         self.distance_measure_thread: Thread = None
-        self.measurment_in_range: bool = True
+        self.measurement_out_of_range: bool = True
         self.keep_distance_stopped: bool = True
         self.keep_distance_coordinate_thread: Thread = None
         self.keep_distance_drive_thread: Thread = None
 
         # set default wheel position
         self.servocontroller.set_drive_servos(self.DEFAULT_WHEEL_POSITION)
+        self.front_camera.point(90)
 
-    def create_logger(self, levelConsole) -> logging.Logger:
-        logger = logging.getLogger("MarsRover")
-        logger.setLevel(logging.DEBUG)
-        formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(funcName)s - %(message)s")
-        # console logging
-        ch = logging.StreamHandler()
-        ch.setLevel(levelConsole)
-        ch.setFormatter(formatter)
-        logger.addHandler(ch)
-        # file logging
-        currentDirectory = os.getcwd()
-        fileName = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
-        file = rf"{currentDirectory}/logfiles/{fileName}"
-        print(file)
-        try:
-            fh = logging.FileHandler(file)
-            fh.setFormatter(formatter)
-            fh.setLevel(logging.DEBUG)
-            logger.addHandler(fh)
-        except Exception:
-            logger.error("failed to add filehandler")
-        return logger
+    # def create_logger(self, levelConsole) -> logging.Logger:
+    #     logger = logging.getLogger("MarsRover")
+    #     logger.setLevel(logging.DEBUG)
+    #     formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(funcName)s - %(message)s")
+    #     # console logging
+    #     ch = logging.StreamHandler()
+    #     ch.setLevel(levelConsole)
+    #     ch.setFormatter(formatter)
+    #     logger.addHandler(ch)
+    #     # file logging
+    #     currentDirectory = os.getcwd()
+    #     fileName = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
+    #     file = rf"{currentDirectory}/logfiles/{fileName}"
+    #     print(file)
+    #     try:
+    #         fh = logging.FileHandler(file)
+    #         fh.setFormatter(formatter)
+    #         fh.setLevel(logging.DEBUG)
+    #         logger.addHandler(fh)
+    #     except Exception:
+    #         logger.error("failed to add filehandler")
+    #     return logger
 
     def get_status(self):
         status_dict = {
@@ -92,8 +95,9 @@ class MarsRover():
             if self.keep_distance_stopped:
                 self.stop_drive()
                 break
-            if self.measurment_in_range:
-                self.start_drive()
+            if self.measurement_out_of_range:
+                if self.wheel_position == WheelPosition.VERTICAL:
+                    self.start_drive()
             else:
                 self.stop_drive()
 
@@ -104,16 +108,16 @@ class MarsRover():
                 self.logger.debug("too far from object")
                 # drive forward
                 self.drive_direction = DriveDirection.FORWARD
-                self.measurment_in_range = True
+                self.measurement_out_of_range = True
             elif(preferredDistanceMin > distance_front):
                 self.logger.debug("too close to object")
                 # drive reverse
                 self.drive_direction = DriveDirection.REVERSE
-                self.measurment_in_range = True
+                self.measurement_out_of_range = True
             elif(preferredDistanceMin <= distance_front and preferredDistanceMax >= distance_front):
                 self.logger.debug("in preferred distance to object")
                 # stop drive
-                self.measurment_in_range = False
+                self.measurement_out_of_range = False
             else:
                 self.logger.debug(f"measured distance: {distance_front}, preferred distance between min: {preferredDistanceMin} and max: {preferredDistanceMax}")
                 raise Exception("VERY wrong")
@@ -142,6 +146,7 @@ class MarsRover():
             self.sensorcontroller.distance_measure_stopped = False
             self.distance_measure_thread = Thread(target=self.sensorcontroller.continuous_distance_measure, name="ContinuousDistanceMeasure")
             self.distance_measure_thread.start()
+            sleep(0.2)
         else:
             self.logger.warning("distance measure already running")
 
@@ -167,17 +172,39 @@ class MarsRover():
         if self.current_speed == 0:
             self.motorcontroller.set_all_motors(self.drive_direction, self.wheel_position, self.drive_speed)
             self.current_speed = self.drive_speed
-            
             if duration > 0:
+                self.logger.info(f"start drive with speed: {self.current_speed} for {duration}secs")
                 sleep(duration)
                 self.stop_drive()
+            else:
+                self.logger.info(f"start drive with speed: {self.current_speed}")
 
     def stop_drive(self):
         if self.current_speed > 0:
             self.motorcontroller.dispatch_all()
             self.current_speed = 0
     
+    def drive_until_distance_is(self, preferred_distance: float):
+        buffer_preferred_distance = preferred_distance + 5
+        if self.sensorcontroller.distance_front > buffer_preferred_distance:
+            self.logger.info(f"stop drive when approx. {preferred_distance}mm away")
+            drive_speed_temp = self.drive_speed 
+            while self.sensorcontroller.distance_front > buffer_preferred_distance:
+                current_distance = self.sensorcontroller.distance_front
+                close = buffer_preferred_distance + 100
+                closeup_speed = 0.15
+                if current_distance <= close and self.current_speed > closeup_speed:
+                    self.logger.info(f"close up to object: {current_distance}")
+                    self.stop_drive()
+                    self.drive_speed = closeup_speed
+                    self.start_drive()
+                sleep(0.05)
+            self.stop_drive()
+            self.logger.info(f"distance at stop: {self.sensorcontroller.distance_front}")
+            self.drive_speed = drive_speed_temp   
+
     def turn(self, to_angle: int):
+        self.logger.info(f"start turn to {to_angle}°")
         self.setwheelposition(WheelPosition.CIRCULAR)
         temp_speed = self.drive_speed
         self.drive_speed = 1

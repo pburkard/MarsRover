@@ -1,9 +1,12 @@
 import sys
+from threading import Thread
 sys.path.append("/home/pi/MarsRover/marsrovercore")
 
 from marsrovercore.enums import WheelPosition, DriveDirection, StartMode
 from marsrovercore.marsrover import MarsRover
+import marsrovercore.logginghelper as logginghelper
 from time import sleep
+import logging
 
 rover: MarsRover
 
@@ -19,7 +22,6 @@ def wheelpositiontest():
     for position in WheelPosition:
         rover.setwheelposition(position)
         sleep(0.5)
-    rover.take_default_position()
 
 def calibrate_horizontal_position():
     rover.setwheelposition(WheelPosition.HORIZONTAL)
@@ -35,9 +37,9 @@ def calibrate_circular_turn():
 def calibrate_distance_vl53l0x():
     rover.sensorcontroller.distance_measure_start()
 
-def drive_square_test(timePerSide):
+def drive_square_test_horizontal(timePerSide):
     rover.take_default_position()
-    rover.drive_speed = 0.6
+    rover.drive_speed = 0.8
     # vertical/horizontal
     rover.drive_direction = DriveDirection.FORWARD
     rover.start_drive(duration=timePerSide)
@@ -50,6 +52,10 @@ def drive_square_test(timePerSide):
     rover.setwheelposition(WheelPosition.HORIZONTAL)
     rover.drive_direction = DriveDirection.FORWARD
     rover.start_drive(duration=timePerSide)
+
+def drive_square_test_circular(timePerSide):
+    rover.take_default_position()
+    rover.drive_speed = 0.8
     # vertical/circular
     for _ in range(4):
         rover.setwheelposition(WheelPosition.VERTICAL)
@@ -58,26 +64,66 @@ def drive_square_test(timePerSide):
         rover.drive_direction = DriveDirection.TURN_LEFT
         rover.turn(90)
 
-def take_picture():
+def picturetest():
     rover.front_camera.point(45)
     rover.front_camera.take_picture()
 
+def show_off():
+    rover.drive_direction = DriveDirection.REVERSE
+    rover.drive_speed = 0.4
+    rover.start_drive(duration=2)
+    rover.setwheelposition(WheelPosition.CIRCULAR)
+    rover.drive_direction = DriveDirection.TURN_RIGHT
+    rover.turn(90)
+    rover.setwheelposition(WheelPosition.VERTICAL)
+    sleep(0.5)
+    rover.front_camera.point(45)
+    sleep(0.5)
+    rover.front_camera.point(135)
+    sleep(0.5)
+    rover.front_camera.point(90)
+
+def drive_parkour_1():
+    rover.distance_measure_start()
+    rover.drive_speed = 0.8
+    rover.start_drive()
+    rover.drive_until_distance_is(100)
+    rover.front_camera.point(0)
+    sleep(1)
+    rover.front_camera.point(90)
+    rover.turn(90)
+    rover.setwheelposition(WheelPosition.VERTICAL)
+    rover.start_drive()
+    rover.drive_until_distance_is(100)
+    rover.drive_direction = DriveDirection.TURN_RIGHT
+    rover.front_camera.point(180)
+    sleep(1)
+    rover.front_camera.point(90)
+    rover.turn(90)
+    rover.drive_direction = DriveDirection.FORWARD
+    rover.setwheelposition(WheelPosition.VERTICAL)
+    rover.start_drive(duration=1.5)
+
+# voc sensor on the environment hat seems to be dead. i2cdetect -y 3 does not find 0x59 VOC
+# def voc_sensor_test():
+#     rover.sensorcontroller.get_voc()
+
 if(__name__ == '__main__'):
-    rover = MarsRover(camera_enabled=False)
-    # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
-    # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
-
-    rover.logger.critical('START')
-    rover.logger.critical(f'mode: {StartMode.TESTBED.name}')
-
+    logger_root = logginghelper.create_logger("MarsRover", logging.INFO)
+    logger = logging.getLogger(f"MarsRover.{StartMode.TESTBED.name}")
     try:
-        print("")
+        rover = MarsRover(camera_enabled=False)
+        # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
+        # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
+        logger.critical('START')
+        
+        drive_parkour_1()
     except KeyboardInterrupt:
-        rover.logger.critical("exit triggered by KEYBOARDINTERRUPT")
+        logger.critical("exit triggered by KEYBOARDINTERRUPT")
     except Exception as ex:
-        rover.logger.critical("exit triggered by EXCEPTION")
-        rover.logger.exception(ex)
+        logger.critical("exit triggered by EXCEPTION")
+        logger.exception(ex)
     finally:
         rover.pull_handbreak()
         rover.gpio.cleanup_all()
-    rover.logger.critical('END \n------------------------------------------------------------------')
+        logger.critical('END \n------------------------------------------------------------------')

@@ -11,10 +11,10 @@ class ServoController():
         from classes.servo_hd1370a import HD1370A
         from classes.servo_mg996r import MG996R
         # drive servo
-        self.DS1 = MG996R("DS1", pca9685, ServoDriverChannel.DS1, mid=408, min=155, max=645)
-        self.DS2 = MG996R("DS2", pca9685, ServoDriverChannel.DS2, min=160, mid=408, max=660)
-        self.DS3 = MG996R("DS3", pca9685, ServoDriverChannel.DS3, min=170, mid=420)
-        self.DS4 = MG996R("DS4", pca9685, ServoDriverChannel.DS4, mid=410)
+        self.DS1 = MG996R("DS1", pca9685, ServoDriverChannel.DS1, mid=407, min=155, max=645)
+        self.DS2 = MG996R("DS2", pca9685, ServoDriverChannel.DS2, min=160, mid=406, max=660)
+        self.DS3 = MG996R("DS3", pca9685, ServoDriverChannel.DS3, min=170, mid=410)
+        self.DS4 = MG996R("DS4", pca9685, ServoDriverChannel.DS4, mid=405)
         # camera servo
         self.CS1 = HD1370A("CS1", pca9685, ServoDriverChannel.CS1, 230, 690, 450, rmid=550, lmid=350)
 

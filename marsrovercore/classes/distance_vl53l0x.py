@@ -9,10 +9,12 @@ class DistanceSensor:
         self.logger = logging.getLogger("MarsRover.DistanceSensor")
         self.i2c = busio.I2C(board.SCL, board.SDA)
         self.sensor = adafruit_vl53l0x.VL53L0X(self.i2c)
-        self.sensor.measurement_timing_budget = 200000
+        self.sensor.measurement_timing_budget = 50000
 
     def get_distance(self):
-        distance = self.sensor.range
+        measure_in_mm = self.sensor.range
+        calibration_in_mm = 90
+        distance = measure_in_mm - calibration_in_mm
         self.logger.debug(f"distance measure: {distance}mm")
         return distance
 

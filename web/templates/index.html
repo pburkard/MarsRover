@@ -7,7 +7,7 @@
 
             // ON LOAD
             $(function () {
-                getSensorMeasures()
+                getSensorMeasures();
                 initRefresh(refreshTime);
             });
 
@@ -39,6 +39,18 @@
                 });
             }
 
+            // function getMotionMeasures(){
+            //     $.ajax({
+            //         type: "GET",
+            //         url: $SCRIPT_ROOT + "/get_motion_measures/",
+            //         contentType: "application/json; charset=utf-8",
+            //         success: function (data) {
+            //             datastring = Object.entries(data).toString()
+            //             $('#motion').text(Object.entries(data));
+            //         }
+            //     });
+            // }
+
             function getStatus() {
                 $.ajax({
                     type: "GET",
@@ -47,6 +59,7 @@
                     success: function (data) {
                         $('#currentSpeed').text(data.current_speed * 100);
                         $('#driveSpeed').text(data.drive_speed * 100 + ' %');
+                        console.log(data.front_distance)
                         if(data.front_distance == 0.0){
                             $('#frontDistance').text('sensor turned off');
                         } else {
@@ -306,6 +319,8 @@
         </tbody>
     </table>
     </br>
+    <p id="motion"></p>
+    </br>
     <div class="slidecontainer">
         <p>Drive Speed: <span id="driveSpeedConfig">60</span> %</p>
         <input type="range"  min="1" max="100" value="60" class="slider" id="speedInput">
@@ -366,6 +381,10 @@
                         <tr>
                             <th scope="row">P</th>
                             <td>Reboot Raspberry Pi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">T</th>
+                            <td>Keep Distance To Object Mode</td>
                         </tr>
                     </tbody>
                 </table>

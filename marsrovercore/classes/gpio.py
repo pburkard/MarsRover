@@ -5,17 +5,16 @@ from marsrovercore.enums import Pin, PinSignalDirection, PinSignalState
 class GPIO():
     def __init__(self):
         self.logger = logging.getLogger("MarsRover.GPIO")
-        self.cleanup_all()
         self.set_mode(GPIO_.BCM)
         self.set_warnings(True)
 
-        # Motor Controller 1
+        # Motor Driver 1
         self.init_output(Pin.MC1_IN1)
         self.init_output(Pin.MC1_IN2)
         self.init_output(Pin.MC1_IN3)
         self.init_output(Pin.MC1_IN4)
         
-        # Motor Controller 2
+        # Motor Driver 2
         self.init_output(Pin.MC2_IN1)
         self.init_output(Pin.MC2_IN2)
         self.init_output(Pin.MC2_IN3)
@@ -26,6 +25,11 @@ class GPIO():
     
     def cleanup_all(self):
         self.logger.debug("cleanup all")
+        self.set_signal_state(Pin.DISTANCE_XSHUT, signal_state=PinSignalState.LOW)
+        all_pins: list = []
+        for pin in Pin:
+            all_pins.append(pin.value)
+        # self.cleanup(all_pins)
         GPIO_.cleanup()
 
     def cleanup(self, pins:list):

@@ -1,13 +1,10 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
+import logging
 import sys
 import time
-import math
 import smbus2
-import RPi.GPIO as GPIO
-
-from marsrovercore.classes.gpio import GPIO
 
 I2C_ADDR = (0x29)
 I2C_BUS = 1
@@ -87,6 +84,7 @@ MAX_COUNT           = (65535) # 0xFFFF
 
 class TSL2591():
 	def __init__(self, address=I2C_ADDR, bus = I2C_BUS) -> None:
+		self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{TSL2591.__name__}")
 		self.i2c = smbus2.SMBus(bus)
 		self.address = address
 
@@ -146,13 +144,14 @@ class TSL2591():
 			
 		full, ir = self.Read_2Channel()
 		if full == 0xFFFF or ir == 0xFFFF:
-			raise RuntimeError('Numerical overflow!')
+			self.logger.exception(RuntimeError('Numerical overflow!'))
 
 		# lux1 = (full - (LUX_COEFB * ir)) / self.Cpl
 		# lux2 = ((LUX_COEFC * full) - (LUX_COEFD * ir)) / self.Cpl
 		# return max(int(lux1), int(lux2))
 		lux = ((full-ir) * (1.00 - (ir/full))) / self.Cpl
 		# lux = (full-ir)/ self.Cpl
+		self.logger.info(f"Lux: {lux}")
 		return lux
 
 	def SET_LuxInterrupt(self, SET_LOW, SET_HIGH):

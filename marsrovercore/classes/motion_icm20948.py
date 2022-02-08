@@ -327,14 +327,14 @@ class ICM20948(object):
     q2q3 = q2 * q3
     q3q3 = q3 * q3
 
-    print(norm)
-    print(ax)
-    print(ay)
-    print(az)
+    # print(norm)
+    # print(ax)
+    # print(ay)
+    # print(az)
 
-    print(mx)
-    print(my)
-    print(mz)
+    # print(mx)
+    # print(my)
+    # print(mz)
 
     norm = float(1/math.sqrt(ax * ax + ay * ay + az * az))
     ax = ax * norm
@@ -438,16 +438,16 @@ class ICM20948(object):
 
     return [roll, pitch, yaw, Accel[0], Accel[1], Accel[2], Gyro[0], Gyro[1], Gyro[2], Mag[0], Mag[1], Mag[2]]
 
-if __name__ == '__main__':
-  print("\nSense HAT Test Program ...\n")
+# if __name__ == '__main__':
+#   print("\nSense HAT Test Program ...\n")
 
-  icm20948 = ICM20948()
-  while True:
-    icm = []
-    icm = icm20948.getdata()
-    print("/-------------------------------------------------------------/")
-    print("Roll = %.2f , Pitch = %.2f , Yaw = %.2f" % (icm[0], icm[1], icm[2]))
-    print("Acceleration: X = %d, Y = %d, Z = %d" % (icm[3], icm[4], icm[5]))
-    print("Gyroscope:     X = %d , Y = %d , Z = %d" % (icm[6], icm[7], icm[8]))
-    print("Magnetic:      X = %d , Y = %d , Z = %d" %
-          (icm[9], icm[10], icm[11]))
+#   icm20948 = ICM20948()
+#   while True:
+#     icm = []
+#     icm = icm20948.getdata()
+#     print("/-------------------------------------------------------------/")
+#     print("Roll = %.2f , Pitch = %.2f , Yaw = %.2f" % (icm[0], icm[1], icm[2]))
+#     print("Acceleration: X = %d, Y = %d, Z = %d" % (icm[3], icm[4], icm[5]))
+#     print("Gyroscope:     X = %d , Y = %d , Z = %d" % (icm[6], icm[7], icm[8]))
+#     print("Magnetic:      X = %d , Y = %d , Z = %d" %
+#           (icm[9], icm[10], icm[11]))
