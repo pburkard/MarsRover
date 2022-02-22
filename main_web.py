@@ -1,15 +1,17 @@
 import sys
 sys.path.append("/home/pi/MarsRover/web")
 sys.path.append("/home/pi/MarsRover/marsrovercore")
-
-from time import sleep
 from web import app, rover
 from marsrovercore.enums import StartMode
+import marsrovercore.logginghelper as logginghelper
+import logging
+
+logger: logging.Logger = None
 
 if(__name__ == '__main__'):
-    rover.logger.critical('START')
-    rover.logger.critical(f'mode: {StartMode.WEBCONTROL.name}')
     try:
+        logger_root = logginghelper.create_logger("MarsRover", logging.INFO)
+        logger = logging.getLogger(f"MarsRover.{StartMode.WEBCONTROL.name}")
         rover.take_default_position()
         # run flask app
         app.run(host='0.0.0.0', port=8181)
@@ -19,7 +21,9 @@ if(__name__ == '__main__'):
         rover.logger.critical("exit triggered by EXCEPTION")
         rover.logger.exception(ex)
     finally:
-        rover.pull_handbreak()
-        rover.gpio.cleanup_all()
-    rover.logger.critical('END \n------------------------------------------------------------------')
+        if rover:
+            rover.pull_handbreak()
+            rover.gpio.cleanup_all()
+        if logger:
+            rover.logger.critical('END \n------------------------------------------------------------------')
 

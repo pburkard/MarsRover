@@ -1,14 +1,14 @@
 import sys
 from threading import Thread
 sys.path.append("/home/pi/MarsRover/marsrovercore")
-
 from marsrovercore.enums import WheelPosition, DriveDirection, StartMode
 from marsrovercore.marsrover import MarsRover
 import marsrovercore.logginghelper as logginghelper
 from time import sleep
 import logging
 
-rover: MarsRover
+logger: logging.Logger = None
+rover: MarsRover = None
 
 def drivetest():
     rover.drive_direction = DriveDirection.FORWARD
@@ -109,9 +109,9 @@ def drive_parkour_1():
 #     rover.sensorcontroller.get_voc()
 
 if(__name__ == '__main__'):
-    logger_root = logginghelper.create_logger("MarsRover", logging.INFO)
-    logger = logging.getLogger(f"MarsRover.{StartMode.TESTBED.name}")
     try:
+        logger_root = logginghelper.create_logger("MarsRover", logging.INFO)
+        logger = logging.getLogger(f"MarsRover.{StartMode.TESTBED.name}")
         rover = MarsRover(camera_enabled=False)
         # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
         # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
@@ -122,6 +122,8 @@ if(__name__ == '__main__'):
         logger.critical("exit triggered by EXCEPTION")
         logger.exception(ex)
     finally:
-        rover.pull_handbreak()
-        rover.gpio.cleanup_all()
-        logger.critical('END \n------------------------------------------------------------------')
+        if rover:
+            rover.pull_handbreak()
+            rover.gpio.cleanup_all()
+        if logger:
+            logger.critical('END \n------------------------------------------------------------------')

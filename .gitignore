@@ -3,3 +3,4 @@ pictures/
 __pycache__/
 env/
 .DS_Store
+functionality-testing/
