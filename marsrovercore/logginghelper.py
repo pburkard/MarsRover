@@ -3,6 +3,7 @@ import datetime
 import os
 
 root_logger: logging.Logger = None
+filelogger_dir_name = "logfiles"
 
 def create_logger(name: str, levelConsole) -> logging.Logger:
     global root_logger
@@ -16,17 +17,16 @@ def create_logger(name: str, levelConsole) -> logging.Logger:
         ch.setFormatter(formatter)
         root_logger.addHandler(ch)
         # file logging
-        currentDirectory = os.getcwd()
-        fileName = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
-        file = rf"{currentDirectory}/logfiles/{fileName}"
-        print(file)
-        try:
-            fh = logging.FileHandler(file)
-            fh.setFormatter(formatter)
-            fh.setLevel(logging.DEBUG)
-            root_logger.addHandler(fh)
-        except Exception as ex:
-            raise ex
+        current_dir = os.getcwd()
+        filelogger_dir = rf"{current_dir}/{filelogger_dir_name}"
+        if not os.path.isdir(filelogger_dir):
+            os.mkdir(filelogger_dir)
+        logfile_name = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
+        logfile_path = rf"{filelogger_dir}/{logfile_name}"
+        fh = logging.FileHandler(logfile_path)
+        fh.setFormatter(formatter)
+        fh.setLevel(logging.DEBUG)
+        root_logger.addHandler(fh)
     return root_logger
 
 def get_logger(name: str) -> logging.Logger:

@@ -116,8 +116,6 @@ if(__name__ == '__main__'):
         # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
         # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
         logger.critical('START')
-        
-        drive_parkour_1()
     except KeyboardInterrupt:
         logger.critical("exit triggered by KEYBOARDINTERRUPT")
     except Exception as ex:
