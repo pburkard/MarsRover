@@ -1,7 +1,8 @@
-import logging
-import datetime
 import os
-from time import sleep, time
+from time import sleep
+import busio
+from board import SCL, SDA
+from adafruit_pca9685 import PCA9685
 from threading import Thread
 from marsrovercore.enums import DriveDirection, WheelPosition
 import marsrovercore.logginghelper as logginghelper
@@ -24,12 +25,12 @@ class MarsRover():
         from controllers.motorcontroller import MotorController
         from marsrovercore.modules.camera import Camera
         from controllers.sensorcontroller import SensorController
-        from Adafruit_PCA9685 import PCA9685
 
         self.logger = logginghelper.get_logger("Core")
         self.gpio = GPIO()
-        self.pca9685 = PCA9685()
-        self.pca9685.set_pwm_freq(60)
+        self.circuitpython_i2c_bus1 = busio.I2C(SCL, SDA)
+        self.pca9685 = PCA9685(self.circuitpython_i2c_bus1, address=65)
+        self.pca9685.frequency = 60
         self.servocontroller = ServoController(self.pca9685)
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
         self.sensorcontroller = SensorController(i2c_bus=3)
@@ -44,29 +45,6 @@ class MarsRover():
         # set default wheel position
         self.servocontroller.set_drive_servos(self.DEFAULT_WHEEL_POSITION)
         self.front_camera.point(90)
-
-    # def create_logger(self, levelConsole) -> logging.Logger:
-    #     logger = logging.getLogger("MarsRover")
-    #     logger.setLevel(logging.DEBUG)
-    #     formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(funcName)s - %(message)s")
-    #     # console logging
-    #     ch = logging.StreamHandler()
-    #     ch.setLevel(levelConsole)
-    #     ch.setFormatter(formatter)
-    #     logger.addHandler(ch)
-    #     # file logging
-    #     currentDirectory = os.getcwd()
-    #     fileName = f"MarsRover_{datetime.date.today().strftime('%d-%m-%Y')}.log"
-    #     file = rf"{currentDirectory}/logfiles/{fileName}"
-    #     print(file)
-    #     try:
-    #         fh = logging.FileHandler(file)
-    #         fh.setFormatter(formatter)
-    #         fh.setLevel(logging.DEBUG)
-    #         logger.addHandler(fh)
-    #     except Exception:
-    #         logger.error("failed to add filehandler")
-    #     return logger
 
     def get_status(self):
         status_dict = {
@@ -86,8 +64,6 @@ class MarsRover():
         self.distance_measure_stop()
         # stop motors and servos
         self.stop_drive()
-        self.servocontroller.dispatch_drive_servos()
-        self.front_camera.dispatch_servo()
         
     def keep_distance_drive(self):
         self.take_default_position()
@@ -211,6 +187,16 @@ class MarsRover():
         secs = self.SECS_UNTIL_360_TURN / 360 * to_angle
         self.start_drive(duration=secs)
         self.drive_speed = temp_speed
+
+    def take_panorama(self):
+        if self.check_camera():
+            self.logger.info("take panorama of containing 5 pictures")
+            angles = [180, 135, 90, 45, 0]
+            for angle in angles:
+                self.point(angle)
+                self.take_picture()
+            # back to center
+            self.point(90)
 
     def shutdown():
         os.system("sudo halt &")
