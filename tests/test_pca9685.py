@@ -1,4 +1,4 @@
-# from marsrovercore.classes.distance_vl53l0x import DistanceSensor
+# from marsrovercore.modules.distance_vl53l0x import DistanceSensor
 # rename classes to modules
 def func(angle):
     from board import SCL, SDA

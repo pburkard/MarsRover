@@ -1,5 +1,5 @@
 import logging
-from classes.servo import Servo
+from modules.servo import Servo
 from controllers.servocontroller import PCA9685, ServoDriverChannel
 
 class HD1370A(Servo):

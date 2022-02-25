@@ -1,11 +1,11 @@
 import logging
 from time import sleep
-from classes.light_tsl2591 import TSL2591
-# from classes.voc_sgp40_2 import SGP40
-from classes.uv_ltr390 import LTR390
-from classes.motion_icm20948 import ICM20948
-from classes.weather_bme280 import BME280
-from classes.distance_vl53l0x import DistanceSensor
+from modules.light_tsl2591 import TSL2591
+# from modules.voc_sgp40_2 import SGP40
+from modules.uv_ltr390 import LTR390
+from modules.motion_icm20948 import ICM20948
+from modules.weather_bme280 import BME280
+from modules.distance_vl53l0x import DistanceSensor
 
 class SensorController():
     def __init__(self, i2c_bus: int) -> None:

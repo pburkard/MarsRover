@@ -3,7 +3,7 @@ import logging
 from time import sleep
 from marsrovercore.marsrover import DriveDirection, WheelPosition
 from controllers.servocontroller import ServoDriverChannel
-from marsrovercore.classes.gpio import GPIO, Pin, PinSignalState
+from marsrovercore.modules.gpio import GPIO, Pin, PinSignalState
 from marsrovercore.enums import MotorDirection, ServoDriverChannel
 
 class MotorController():

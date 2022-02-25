@@ -8,8 +8,8 @@ class ServoController():
 
     def __init__(self, pca9685: PCA9685):
         self.logger = logging.getLogger('MarsRover.ServoController')
-        from classes.servo_hd1370a import HD1370A
-        from classes.servo_mg996r import MG996R
+        from modules.servo_hd1370a import HD1370A
+        from modules.servo_mg996r import MG996R
         # drive servo
         self.DS1 = MG996R("DS1", pca9685, ServoDriverChannel.DS1, mid=407, min=155, max=645)
         self.DS2 = MG996R("DS2", pca9685, ServoDriverChannel.DS2, min=160, mid=406, max=660)

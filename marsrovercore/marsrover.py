@@ -19,10 +19,10 @@ class MarsRover():
     wheel_position: WheelPosition = DEFAULT_WHEEL_POSITION
 
     def __init__(self, camera_enabled: bool):
-        from classes.gpio import GPIO
+        from modules.gpio import GPIO
         from controllers.servocontroller import ServoController
         from controllers.motorcontroller import MotorController
-        from marsrovercore.classes.camera import Camera
+        from marsrovercore.modules.camera import Camera
         from controllers.sensorcontroller import SensorController
         from Adafruit_PCA9685 import PCA9685
 
