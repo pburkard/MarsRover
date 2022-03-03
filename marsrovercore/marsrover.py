@@ -33,7 +33,7 @@ class MarsRover():
         self.pca9685.frequency = 60
         self.servocontroller = ServoController(self.pca9685)
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
-        self.sensorcontroller = SensorController(i2c_bus=3)
+        self.sensorcontroller = SensorController(i2c_bus_number=3)
         self.front_camera = Camera(camera_enabled, self.servocontroller)
         
         self.distance_measure_thread: Thread = None

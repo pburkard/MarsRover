@@ -9,19 +9,29 @@ import Adafruit_GPIO.I2C as I2C
 logger = logging.getLogger("MarsRover.UPS")
 
 class UPS:
-    def __init__(self) -> None:
+    def __init__(self, i2c_bus_number, i2c_address) -> None:
         self.SHUNT_OHMS = 0.05
+        self.ina = INA219(self.SHUNT_OHMS, busnum=i2c_bus_number, address=i2c_address)
+        self.ina.configure()
         
+    # def getStatus(self):
+    #     ina = INA219(self.SHUNT_OHMS, busnum=1)
+    #     ina.configure()
+    #     print("Bus Voltage: %.3f V" % ina.voltage())
+    #     try:
+    #         print("Bus Current: %.3f mA" % ina.current())
+    #         print("Power: %.3f mW" % ina.power())
+    #         print("Shunt voltage: %.3f mV" % ina.shunt_voltage())
+    #     except DeviceRangeError as e:
+    #         logger.error(e)
+
     def getStatus(self):
-        ina = INA219(self.SHUNT_OHMS)
-        ina.configure()
-        print("Bus Voltage: %.3f V" % ina.voltage())
-        try:
-            print("Bus Current: %.3f mA" % ina.current())
-            print("Power: %.3f mW" % ina.power())
-            print("Shunt voltage: %.3f mV" % ina.shunt_voltage())
-        except DeviceRangeError as e:
-            logger.error(e)
+        ina = self.ina
+        status = [ina.voltage(), ina.current(), ina.power(), ina.shunt_voltage()]
+        return status
+
+    def getVoltage(self):
+        return self.ina.voltage()
 
 """Library for the INA219 current and power monitor from Texas Instruments.
 

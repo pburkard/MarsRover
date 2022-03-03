@@ -3,32 +3,25 @@ import busio
 from adafruit_pca9685 import PCA9685
 from time import sleep
 
-i2c = busio.I2C(SCL, SDA)
-pca = PCA9685(i2c, address=0x41)
-pca.frequency = 60
-
-def move_servo_standalone(to_angle):
-    from adafruit_motor import servo
-
-    sample_servo = servo.Servo(pca.channels[5], actuation_range=180, min_pulse=700, max_pulse=2700)
-    sample_servo.angle = to_angle
-    sleep(1)
-    result = sample_servo.angle
-    pca.deinit()
-    return result
-
 def move_servo(to_angle):
+    i2c = busio.I2C(SCL, SDA)
+    pca = PCA9685(i2c, address=0x41)
+    pca.frequency = 60
     from marsrovercore.controllers.servocontroller import ServoController
-
     sc = ServoController(pca)
-    sample_servo = sc.DS4
+    sample_servo = sc.DS2
+    sample_servo.angle = 0
+    sleep(1)
     sample_servo.angle = to_angle
     sleep(1)
     result = sample_servo.angle
     pca.deinit()
     return result
 
-def test_move_servo_to_angle_135():
-    test_angle = 135
-    precision = 0.5
-    assert (test_angle-precision) <= move_servo(test_angle) <= (test_angle+precision)
+def is_within_precision(precision_degrees, test_angle, result_angle):
+    return (test_angle-precision_degrees) <= result_angle <= (test_angle+precision_degrees)
+
+def test_move_servo():
+    test_angle = 90
+    result_angle = move_servo(test_angle)
+    assert is_within_precision(2, test_angle, result_angle)
