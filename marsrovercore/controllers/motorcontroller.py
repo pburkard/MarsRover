@@ -1,10 +1,9 @@
 from Adafruit_PCA9685 import PCA9685
 import logging
 from time import sleep
-from marsrovercore.marsrover import DriveDirection, WheelPosition
 from controllers.servocontroller import ServoDriverChannel
-from marsrovercore.modules.gpio import GPIO, Pin, PinSignalState
-from marsrovercore.enums import MotorDirection, ServoDriverChannel
+from marsrovercore.modules.gpio import GPIO
+from marsrovercore.enums import MotorDirection, ServoDriverChannel, DriveDirection, WheelPosition, Pin, PinSignalState
 
 class MotorController():
    # The variable duty_cycle specifies the maximum duty cycle of the motors 

@@ -8,12 +8,12 @@ from modules.weather_bme280 import BME280
 from modules.distance_vl53l0x import DistanceSensor
 
 class SensorController():
-    def __init__(self, i2c_bus: int) -> None:
+    def __init__(self, i2c_bus_number: int) -> None:
         self.logger = logging.getLogger("MarsRover.EnvironmentHat")
         
-        self.weatherSensor = BME280(bus=i2c_bus)
-        self.lightSensor = TSL2591(bus=i2c_bus)
-        self.uvSensor = LTR390(bus=i2c_bus)
+        self.weatherSensor = BME280(bus=i2c_bus_number)
+        self.lightSensor = TSL2591(bus=i2c_bus_number)
+        self.uvSensor = LTR390(bus=i2c_bus_number)
         # self.vocSensor = SGP40(i2c_bus)
         # self.motionSensor = ICM20948(bus=i2c_bus)
         self.distance_sensor = DistanceSensor()
