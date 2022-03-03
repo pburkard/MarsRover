@@ -1,4 +1,3 @@
-from threading import Thread
 import adafruit_vl53l0x
 import board
 import busio
@@ -10,11 +9,13 @@ class DistanceSensor:
         self.i2c = busio.I2C(board.SCL, board.SDA)
         self.sensor = adafruit_vl53l0x.VL53L0X(self.i2c)
         self.sensor.measurement_timing_budget = 50000
+        self.calibration_in_mm = 85
 
     def get_distance(self):
         measure_in_mm = self.sensor.range
-        calibration_in_mm = 90
-        distance = measure_in_mm - calibration_in_mm
+        distance = measure_in_mm - self.calibration_in_mm
+        if distance < 0:
+            distance == 0
         self.logger.debug(f"distance measure: {distance}mm")
         return distance
 

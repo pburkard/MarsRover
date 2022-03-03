@@ -2,7 +2,7 @@ import time
 import smbus2
 import logging
 
-from sensirion_gas_index_algorithm.voc_algorithm import VocAlgorithm
+# from sensirion_gas_index_algorithm.voc_algorithm import VocAlgorithm
 
 # import ctypes
 # voc = ctypes.cdll.LoadLibrary('./voclib.so')
@@ -42,9 +42,10 @@ WITH_HUM_COMP = [0x26, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00] #Manual input
 I2C_ADDR = 0x59
 
 class SGP40:
-    def __init__(self, i2c_bus):
+    def __init__(self, i2c_address=I2C_ADDR, i2c_bus_number=1):
         self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{SGP40.__name__}")
-        self.i2c = smbus2.SMBus(i2c_bus)
+        self.i2c = smbus2.SMBus(i2c_bus_number)
+        self.i2c_address = i2c_address
         
         # feature set 0x3220
         self.write(SGP40_CMD_FEATURE_SET)    
@@ -69,10 +70,10 @@ class SGP40:
         return self.i2c.read_i2c_block_data(self.address, 0, 3)#last byte is CRC8
     
     def write(self, cmd):
-        self.i2c.write_byte_data(I2C_ADDR, cmd[0], cmd[1])
+        self.i2c.write_byte_data(self.i2c_address, cmd[0], cmd[1])
         
     def write_block(self, cmd):
-        self.i2c.write_i2c_block_data(I2C_ADDR, cmd[0], cmd[1:8])
+        self.i2c.write_i2c_block_data(self.i2c_address, cmd[0], cmd[1:8])
         
     # def get_voc_default(self):
     #     """The raw gas value"""

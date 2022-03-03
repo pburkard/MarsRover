@@ -2,12 +2,12 @@ from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
 from time import sleep
+from marsrovercore.controllers.servocontroller import ServoController
 
 def move_servo(to_angle):
     i2c = busio.I2C(SCL, SDA)
     pca = PCA9685(i2c, address=0x41)
     pca.frequency = 60
-    from marsrovercore.controllers.servocontroller import ServoController
     sc = ServoController(pca)
     sample_servo = sc.DS2
     sample_servo.angle = 0
