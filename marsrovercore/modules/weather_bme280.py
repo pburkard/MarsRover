@@ -11,8 +11,8 @@ digH = []
 t_fine = 0.0
 
 class BME280:
-	def __init__(self, address = I2C_ADDR, bus = I2C_BUS):
-		self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{BME280.__name__}")
+	def __init__(self, address = I2C_ADDR, bus = I2C_BUS, logger:logging.Logger = logging.getLogger()):
+		self.logger = logger
 		self.i2c = smbus2.SMBus(bus)
 		self.address = address
 		self.calib = []

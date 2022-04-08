@@ -2,15 +2,12 @@ from time import sleep
 from picamera import PiCamera
 from datetime import datetime
 from controllers.servocontroller import ServoController
-import logging
+import marsrovercore.logginghelper as logginghelper
 
 class Camera:
-    MOVE_TIME = 0.3
-    current_position: int = None
-
     def __init__(self, camera_enabled: bool) -> None:
         self.name = 'C1'
-        self.logger = logging.getLogger(f"MarsRover.Camera.{self.name}")
+        self.logger = logginghelper.get_logger(f"Camera.{self.name}")
         self.camera_enabled = camera_enabled
         
         if self.camera_enabled:

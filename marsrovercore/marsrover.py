@@ -26,7 +26,7 @@ class MarsRover():
         from marsrovercore.modules.camera import Camera
         from controllers.sensorcontroller import SensorController
 
-        self.logger = logginghelper.get_logger("Core")
+        self.logger = logginghelper.create_logger('MarsRover')
         self.gpio = GPIO()
         self.circuitpython_i2c_bus1 = busio.I2C(SCL, SDA)
         self.pca9685 = PCA9685(self.circuitpython_i2c_bus1, address=65)
@@ -34,7 +34,7 @@ class MarsRover():
         self.servocontroller = ServoController(self.pca9685)
         self.motorcontroller = MotorController(self.gpio, self.pca9685)
         self.sensorcontroller = SensorController(i2c_bus_number=3)
-        self.front_camera = Camera(camera_enabled, self.servocontroller)
+        self.front_camera = Camera(camera_enabled)
         
         self.distance_measure_thread: Thread = None
         self.measurement_out_of_range: bool = True
@@ -44,7 +44,7 @@ class MarsRover():
 
         # set default wheel position
         self.servocontroller.set_drive_servos(self.DEFAULT_WHEEL_POSITION)
-        self.front_camera.point(90)
+        self.servocontroller.CS1.angle = 90
 
     def get_status(self):
         status_dict = {

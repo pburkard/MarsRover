@@ -83,8 +83,8 @@ MAX_COUNT           = (65535) # 0xFFFF
 
 
 class TSL2591():
-	def __init__(self, address=I2C_ADDR, bus = I2C_BUS) -> None:
-		self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{TSL2591.__name__}")
+	def __init__(self, address=I2C_ADDR, bus = I2C_BUS, logger: logging.Logger = logging.getLogger()) -> None:
+		self.logger = logger
 		self.i2c = smbus2.SMBus(bus)
 		self.address = address
 

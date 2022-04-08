@@ -27,25 +27,25 @@ class ServoDriverChannel(Enum):
    M3 = 8
    M4 = 9
 
-class MotorDirection(Enum):
+class RotationDirection(Enum):
    POSITIVE = 0
    NEGATIVE = 1
 
 class Pin(Enum):
     I2C_BUS_0_SDA=2
     I2C_BUS_0_SCL=3
-    MC1_IN1=6
+    MD1_IN1=6
     ENVH_LIGHT=10
-    MC2_IN1=12
-    MC1_IN2=13
-    MC2_IN2=16
-    MC1_IN3=19
-    MC2_IN3=20
-    MC2_IN4=21
+    MD2_IN1=12
+    MD1_IN2=13
+    MD2_IN2=16
+    MD1_IN3=19
+    MD2_IN3=20
+    MD2_IN4=21
     I2C_BUS_3_SDA=23
     I2C_BUS_3_SCL=24
     DISTANCE_XSHUT=25
-    MC1_IN4=26
+    MD1_IN4=26
     
 class PinSignalState(Enum):
     LOW = 0

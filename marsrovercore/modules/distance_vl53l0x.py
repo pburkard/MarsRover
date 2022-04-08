@@ -1,11 +1,11 @@
 import adafruit_vl53l0x
 import board
 import busio
-import logging
+import marsrovercore.logginghelper as logginghelper
 
 class DistanceSensor:
     def __init__(self):
-        self.logger = logging.getLogger("MarsRover.DistanceSensor")
+        self.logger = logginghelper.get_logger("DistanceSensor")
         self.i2c = busio.I2C(board.SCL, board.SDA)
         self.sensor = adafruit_vl53l0x.VL53L0X(self.i2c)
         self.sensor.measurement_timing_budget = 50000

@@ -5,8 +5,6 @@ import smbus2
 import math
 import logging
 
-logger = logging.getLogger(f"MarsRover.EnvironmentHat.ICM20948")
-
 Gyro = [0, 0, 0]
 Accel = [0, 0, 0]
 Mag = [0, 0, 0]
@@ -126,7 +124,8 @@ MAG_DATA_LEN = 6
 
 
 class ICM20948(object):
-  def __init__(self, address=I2C_ADD_ICM20948, bus = I2C_BUS):
+  def __init__(self, address=I2C_ADD_ICM20948, bus = I2C_BUS, logger: logging.Logger = logging.getLogger()):
+    self.logger = logger
     self._address = address
     self._bus = smbus2.SMBus(bus)
     # Initialization of the device multiple times after power on will result in a return error

@@ -39,8 +39,8 @@ GAIN_9 = (0x3)
 GAIN_18 = (0x4)
 
 class LTR390:
-    def __init__(self, address = I2C_ADDR, bus = I2C_BUS) -> None:
-        self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{LTR390.__name__}")
+    def __init__(self, address = I2C_ADDR, bus = I2C_BUS, logger:logging.Logger = logging.getLogger()) -> None:
+        self.logger = logger
         self.i2c = smbus2.SMBus(bus)
         self.address = address
         self.Id = self._readByte(LTR390_PART_ID)

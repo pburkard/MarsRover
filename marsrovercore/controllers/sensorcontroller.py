@@ -3,19 +3,20 @@ from time import sleep
 from modules.light_tsl2591 import TSL2591
 # from modules.voc_sgp40_2 import SGP40
 from modules.uv_ltr390 import LTR390
-from modules.motion_icm20948 import ICM20948
+# from modules.motion_icm20948 import ICM20948
 from modules.weather_bme280 import BME280
 from modules.distance_vl53l0x import DistanceSensor
+import marsrovercore.logginghelper as logginghelper
 
 class SensorController():
     def __init__(self, i2c_bus_number: int) -> None:
-        self.logger = logging.getLogger("MarsRover.EnvironmentHat")
+        self.logger = logginghelper.get_logger("EnvironmentHat")
         
-        self.weatherSensor = BME280(bus=i2c_bus_number)
-        self.lightSensor = TSL2591(bus=i2c_bus_number)
-        self.uvSensor = LTR390(bus=i2c_bus_number)
-        # self.vocSensor = SGP40(i2c_bus)
-        # self.motionSensor = ICM20948(bus=i2c_bus)
+        self.weatherSensor = BME280(bus=i2c_bus_number, logger=logginghelper.get_logger("EnvironmentHat.BME280"))
+        self.lightSensor = TSL2591(bus=i2c_bus_number, logger=logginghelper.get_logger("EnvironmentHat.TSL2591"))
+        self.uvSensor = LTR390(bus=i2c_bus_number, logger=logginghelper.get_logger("EnvironmentHat.LTR390"))
+        # self.vocSensor = SGP40(i2c_bus, logger=logginghelper.get_logger("EnvironmentHat.SGP40"))
+        # self.motionSensor = ICM20948(bus=i2c_bus, logger=logginghelper.get_logger("EnvironmentHat.ICM20948"))
         self.distance_sensor = DistanceSensor()
 
         self.distance_front: float = 0.0

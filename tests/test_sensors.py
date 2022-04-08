@@ -8,7 +8,7 @@ from marsrovercore.modules.distance_vl53l0x import DistanceSensor
 def test_temperature_sensor():
     weather_sensor = BME280(address=0x76, bus=3)
     result = weather_sensor.getTemperature()
-    assert 18 < result < 28
+    assert 10 < result < 35
 
 def test_humidity_sensor():
     weather_sensor = BME280(address=0x76, bus=3)
@@ -35,7 +35,7 @@ def test_motion_sensor():
     result = motion_sensor.getdata()
     assert result[0] is not None
 
-# device is dead. Its address is not showing up in the i2c.
+# device is dead. Its address is not showing up on the i2c.
 # def test_voc_sensor():
 #     voc_sensor = SGP40(i2c_address=0x59, i2c_bus_number=3)
 #     result = voc_sensor.get_voc_index()

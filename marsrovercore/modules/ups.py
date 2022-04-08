@@ -1,12 +1,12 @@
 # UPS --> Uninterruptible Power Supply
 # from ina219 import INA219, DeviceRangeError
-import logging
+import marsrovercore.logginghelper as logginghelper
 import time
 from math import trunc
 import Adafruit_GPIO.I2C as I2C
-# , loggername='MarsRover.UPS.INA219'
+import logging
 
-logger = logging.getLogger("MarsRover.UPS")
+logger = logginghelper.get_logger("UPS")
 
 class UPS:
     def __init__(self, i2c_bus_number, i2c_address) -> None:
@@ -145,12 +145,13 @@ class INA219:
         log_level -- set to logging.DEBUG to see detailed calibration
             calculations (optional).
         """
-        if len(logging.getLogger().handlers) == 0:
-            # Initialize the root logger only if it hasn't been done yet by a
-            # parent module.
-            logging.basicConfig(level=log_level, format=self.__LOG_FORMAT)
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(log_level)
+        # if len(logging.getLogger().handlers) == 0:
+        #     # Initialize the root logger only if it hasn't been done yet by a
+        #     # parent module.
+        #     logging.basicConfig(level=log_level, format=self.__LOG_FORMAT)
+        # self.logger = logging.getLogger(__name__)
+        # self.logger.setLevel(log_level)
+        self.logger = logger
 
         self._i2c = I2C.get_i2c_device(address=address, busnum=busnum)
         self._shunt_ohms = shunt_ohms

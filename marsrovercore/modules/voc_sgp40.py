@@ -42,8 +42,8 @@ WITH_HUM_COMP = [0x26, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00] #Manual input
 I2C_ADDR = 0x59
 
 class SGP40:
-    def __init__(self, i2c_address=I2C_ADDR, i2c_bus_number=1):
-        self.logger = logging.getLogger(f"MarsRover.EnvironmentHat.{SGP40.__name__}")
+    def __init__(self, i2c_address=I2C_ADDR, i2c_bus_number=1, logger: logging.Logger = logging.getLogger()):
+        self.logger = logger
         self.i2c = smbus2.SMBus(i2c_bus_number)
         self.i2c_address = i2c_address
         

@@ -5,7 +5,7 @@ import os
 root_logger: logging.Logger = None
 filelogger_dir_name = "logfiles"
 
-def create_logger(name: str, levelConsole) -> logging.Logger:
+def create_logger(name: str) -> logging.Logger:
     global root_logger
     if root_logger == None:
         root_logger = logging.getLogger(name)
@@ -13,7 +13,7 @@ def create_logger(name: str, levelConsole) -> logging.Logger:
         formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(funcName)s - %(message)s")
         # console logging
         ch = logging.StreamHandler()
-        ch.setLevel(levelConsole)
+        ch.setLevel(logging.DEBUG)
         ch.setFormatter(formatter)
         root_logger.addHandler(ch)
         # file logging

@@ -1,34 +1,34 @@
 import RPi.GPIO as GPIO_
-import logging
+import marsrovercore.logginghelper as logginghelper
 from marsrovercore.enums import Pin, PinSignalDirection, PinSignalState
 
 class GPIO():
     def __init__(self):
-        self.logger = logging.getLogger("MarsRover.GPIO")
+        self.logger = logginghelper.get_logger("GPIO")
         self.set_mode(GPIO_.BCM)
         self.set_warnings(True)
 
         # Motor Driver 1
-        self.init_output(Pin.MC1_IN1)
-        self.init_output(Pin.MC1_IN2)
-        self.init_output(Pin.MC1_IN3)
-        self.init_output(Pin.MC1_IN4)
+        self.init_output(Pin.MD1_IN1)
+        self.init_output(Pin.MD1_IN2)
+        self.init_output(Pin.MD1_IN3)
+        self.init_output(Pin.MD1_IN4)
         
         # Motor Driver 2
-        self.init_output(Pin.MC2_IN1)
-        self.init_output(Pin.MC2_IN2)
-        self.init_output(Pin.MC2_IN3)
-        self.init_output(Pin.MC2_IN4)
+        self.init_output(Pin.MD2_IN1)
+        self.init_output(Pin.MD2_IN2)
+        self.init_output(Pin.MD2_IN3)
+        self.init_output(Pin.MD2_IN4)
 
         # Distance sensor
         self.init_output(Pin.DISTANCE_XSHUT, signal_state=PinSignalState.HIGH)
     
     def cleanup_all(self):
         self.logger.debug("cleanup all")
-        self.set_signal_state(Pin.DISTANCE_XSHUT, signal_state=PinSignalState.LOW)
-        all_pins: list = []
-        for pin in Pin:
-            all_pins.append(pin.value)
+        # self.set_signal_state(Pin.DISTANCE_XSHUT, signal_state=PinSignalState.LOW)
+        # all_pins: list = []
+        # for pin in Pin:
+        #     all_pins.append(pin.value)
         # self.cleanup(all_pins)
         GPIO_.cleanup()
 

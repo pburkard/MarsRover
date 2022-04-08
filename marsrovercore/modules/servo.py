@@ -1,12 +1,11 @@
-import logging
+import marsrovercore.logginghelper as logginghelper
 from adafruit_pca9685 import PWMChannel
 from adafruit_motor import servo
-from time import sleep
 
 class Servo(servo.Servo):
     def __init__(self, name:str, channel: PWMChannel, actuation_range: float, min_pulse: float, max_pulse: float):
         super().__init__(channel, actuation_range=actuation_range, min_pulse=min_pulse, max_pulse=max_pulse)
-        self.logger = logging.getLogger(f"MarsRover.{Servo.__name__}.{name}")
+        self.logger = logginghelper.get_logger(f"{Servo.__name__}.{name}")
         self.name = name
 
     # error on startup: angle way too high. probably move once with standard angle change, before continue
