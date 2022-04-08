@@ -1,3 +1,4 @@
+from math import ceil
 from adafruit_pca9685 import PCA9685
 import marsrovercore.logginghelper as logginghelper
 from controllers.servocontroller import ServoDriverChannel
@@ -27,7 +28,7 @@ class MotorController():
 
    def get_dc_from_speed(self, speed:float) -> int:
       if 0.0 < speed <= 1.0:
-         return int(self.DC_MAX * speed)
+         return ceil(self.DC_MAX * speed)
       self.logger.error(f"0.0 < speed <= 1.0. Given value: {speed}")
 
    def set_motor(self, channel: ServoDriverChannel, motordriver_IN_1:Pin, 
