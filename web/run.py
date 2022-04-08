@@ -1,17 +1,15 @@
+import sys
+sys.path.append("/home/pi/MarsRover")
 
-
-from marsrovercore.enums import StartMode
+import ...MarsRover
+from web import app
 import marsrovercore.logginghelper as logginghelper
-import logger
-
-
+import logging
+from marsrovercore.enums import StartMode
 
 if(__name__ == '__main__'):
-    logger_root = logginghelper.create_logger("MarsRover", logging.INFO)
-    logger = logging.getLogger(f"MarsRover.{StartMode.WEBCONTROL.name}")
+    logger = logging.getLogger(StartMode.WEBCONTROL.name)
     try:
-        
-        from web import app, rover
         rover.take_default_position()
         # run flask app
         app.run(host='0.0.0.0', port=8181)
