@@ -5,7 +5,8 @@ from board import SCL, SDA
 from adafruit_pca9685 import PCA9685
 from threading import Thread
 from marsrovercore.enums import DriveDirection, WheelPosition
-import marsrovercore.logginghelper as logginghelper
+# import marsrovercore.logginghelper as logginghelper
+import logging
 
 class MarsRover():
     DEFAULT_SPEED = 0.5
@@ -26,7 +27,8 @@ class MarsRover():
         from marsrovercore.modules.camera import Camera
         from controllers.sensorcontroller import SensorController
 
-        self.logger = logginghelper.get_logger("Core")
+        # self.logger = logginghelper.get_logger("Core")
+        self.logger = logging.getLogger('MarsRover.Core')
         self.gpio = GPIO()
         self.circuitpython_i2c_bus1 = busio.I2C(SCL, SDA)
         self.pca9685 = PCA9685(self.circuitpython_i2c_bus1, address=65)
