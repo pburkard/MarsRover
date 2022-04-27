@@ -53,7 +53,7 @@ class MarsRover():
             "front_distance": self.sensorcontroller.distance_front,
             "drive_direction": self.drive_direction.name,
             "wheel_position": self.wheel_position.name,
-            "camera_position": self.front_camera.current_position
+            "camera_position": self.servocontroller.CS1.angle
         }
         return status_dict
     
@@ -79,6 +79,9 @@ class MarsRover():
 
     def keep_distance_coordinate(self, preferredDistanceMin: float, preferredDistanceMax: float):
         while not self.keep_distance_stopped:
+            if self.sensorcontroller.distance_measure_stopped:
+                self.keep_distance_stopped = True
+                continue
             distance_front = self.sensorcontroller.distance_front
             if(preferredDistanceMax < distance_front):
                 self.logger.debug("too far from object")
@@ -127,6 +130,7 @@ class MarsRover():
             self.logger.warning("distance measure already running")
 
     def distance_measure_stop(self):
+        # if running, stop measure by changing bool variable
         if not self.sensorcontroller.distance_measure_stopped:
             self.sensorcontroller.distance_measure_stopped = True
             self.distance_measure_thread.join()
@@ -135,7 +139,7 @@ class MarsRover():
     def take_default_position(self):
         def take_default_position2():
             self.setwheelposition(self.DEFAULT_WHEEL_POSITION)
-            self.front_camera.point(90)
+            self.servocontroller.CS1.angle = 90
         thread = Thread(target=take_default_position2, name="TakeDefaultPosition")
         thread.start()
 
@@ -157,6 +161,7 @@ class MarsRover():
 
     def stop_drive(self):
         if self.current_speed > 0:
+            self.motorcontroller.stop_all_motors()
             self.motorcontroller.dispatch_all()
             self.current_speed = 0
     

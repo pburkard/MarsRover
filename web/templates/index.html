@@ -59,7 +59,6 @@
                     success: function (data) {
                         $('#currentSpeed').text(data.current_speed * 100);
                         $('#driveSpeed').text(data.drive_speed * 100 + ' %');
-                        console.log(data.front_distance)
                         if(data.front_distance == 0.0){
                             $('#frontDistance').text('sensor turned off');
                         } else {

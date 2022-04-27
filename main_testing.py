@@ -1,8 +1,7 @@
 import sys
 sys.path.append("/home/pi/MarsRover/marsrovercore")
-from marsrovercore.enums import WheelPosition, DriveDirection, StartMode
+from marsrovercore.enums import WheelPosition, DriveDirection
 from marsrovercore.marsrover import MarsRover
-import marsrovercore.logginghelper as logginghelper
 from time import sleep
 import logging
 import os
@@ -129,11 +128,12 @@ fh.setLevel(logging.DEBUG)
 root_logger.addHandler(fh)
 
 root_logger.critical('START')
+rover: MarsRover = None
 try:
     rover = MarsRover(camera_enabled=False)
     # camera_enabled has to be FALSE currently. This is due to the MJPG STREAMER for main_web's live video feed.
     # It would be possible to use grab a frame from port 8080 like the web module does for its video feed
-    drivetest()
+    wheelpositiontest()
 except KeyboardInterrupt:
     root_logger.critical("exit triggered by KEYBOARDINTERRUPT")
 except Exception as ex:

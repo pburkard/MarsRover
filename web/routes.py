@@ -62,14 +62,14 @@ def wheelposition(position):
 @app.route('/point_front_camera/<degree>', methods=['POST'])
 def point_front_camera(degree):
     todegree: int = int(degree)
-    rover.servocontroller.CS1.set_angle(degree, 0.5)
+    rover.servocontroller.CS1.angle = degree
     ret_data = {"value": f"point camera to {todegree}"}
     return jsonify(ret_data)
 
 @app.route('/distance_measure/', methods=['POST'])
 def distance_measure():
     state: str
-    if not rover.sensorcontroller.distance_measure_stopped:
+    if rover.sensorcontroller.distance_measure_stopped:
         rover.distance_measure_start()
         state = "start"
     else:
