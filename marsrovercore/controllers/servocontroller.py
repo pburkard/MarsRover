@@ -9,13 +9,13 @@ class ServoController():
 
     def __init__(self, pca9685: PCA9685):
         self.logger = logging.getLogger('MarsRover.ServoController')
-        # drive servo
-        self.DS1 = Servo(ServoDriverChannel.DS1.name, pca9685.channels[ServoDriverChannel.DS1.value], actuation_range=180, min_pulse=700, max_pulse=2700)
-        self.DS2 = Servo(ServoDriverChannel.DS2.name, pca9685.channels[ServoDriverChannel.DS2.value], actuation_range=180, min_pulse=700, max_pulse=2700)
-        self.DS3 = Servo(ServoDriverChannel.DS3.name, pca9685.channels[ServoDriverChannel.DS3.value], actuation_range=180, min_pulse=700, max_pulse=2700)
-        self.DS4 = Servo(ServoDriverChannel.DS4.name, pca9685.channels[ServoDriverChannel.DS4.value], actuation_range=180, min_pulse=700, max_pulse=2700)
-        # camera servo
-        self.CS1 = Servo(ServoDriverChannel.CS1.name, pca9685.channels[ServoDriverChannel.CS1.value], actuation_range=180, min_pulse=700, max_pulse=2700)
+        # drive servo MG996R
+        self.DS1 = Servo(ServoDriverChannel.DS1.name, pca9685.channels[ServoDriverChannel.DS1.value], actuation_range=180, min_pulse=625, max_pulse=2650)
+        self.DS2 = Servo(ServoDriverChannel.DS2.name, pca9685.channels[ServoDriverChannel.DS2.value], actuation_range=180, min_pulse=625, max_pulse=2650)
+        self.DS3 = Servo(ServoDriverChannel.DS3.name, pca9685.channels[ServoDriverChannel.DS3.value], actuation_range=180, min_pulse=625, max_pulse=2650)
+        self.DS4 = Servo(ServoDriverChannel.DS4.name, pca9685.channels[ServoDriverChannel.DS4.value], actuation_range=180, min_pulse=625, max_pulse=2650)
+        # camera servo HD1370A
+        self.CS1 = Servo(ServoDriverChannel.CS1.name, pca9685.channels[ServoDriverChannel.CS1.value], actuation_range=180, min_pulse=720, max_pulse=2550)
     
     def set_drive_servos(self, position: WheelPosition):
         self.logger.debug(f"set driveservos to {position.name}")
