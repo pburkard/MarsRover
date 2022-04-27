@@ -8,6 +8,10 @@ class Servo(servo.Servo):
         self.logger = logginghelper.get_logger(f"{Servo.__name__}.{name}")
         self.name = name
 
+    def is_at_angle(self, expected_angle:int, precision_degrees:int=2):
+        result_angle = self.angle
+        return (expected_angle-precision_degrees) <= result_angle <= (expected_angle+precision_degrees)
+
     # error on startup: angle way too high. probably move once with standard angle change, before continue
     # def set_angle(self, to_angle:int, speed_not_implemented:float = 1.0):
     #     if not 0 < speed_not_implemented <= 1:
