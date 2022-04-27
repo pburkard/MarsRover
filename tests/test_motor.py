@@ -7,6 +7,9 @@ import busio
 from adafruit_pca9685 import PCA9685
 from marsrovercore.modules.gpio import GPIO
 
+# cannot use adafruit_motor -> motor because the marsrover has the motor drivers (H-Bridges)
+# is https://github.com/adafruit/Adafruit_CircuitPython_Motor/blob/main/examples/motor_h-bridge_dc_motor.py a possibility?
+
 def test_motor():
     test_channel = ServoDriverChannel.M1
     test_speed = 0.5
