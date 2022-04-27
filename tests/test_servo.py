@@ -28,6 +28,18 @@ def test_servo_mg996r():
     # back to start
     sample_servo.angle = current_angle
 
+def test_servo_raw_mg996r_raw():
+    from adafruit_motor import servo
+    myservo = servo.Servo(pca.channels[2], actuation_range=180, min_pulse=625, max_pulse=2650)
+    myservo.angle = 0
+    sleep(1)
+    myservo.angle = 90
+    sleep(1)
+    myservo.angle = 180
+    sleep(1)
+    assert 175 < myservo.angle < 181
+    myservo.angle = 90
+
 def test_servo_hd1370a():
     sample_servo = sc.CS1
     test_angle = 120
@@ -46,18 +58,6 @@ def test_servo_hd1370a():
 def test_servo_hd1370a_raw():
     from adafruit_motor import servo
     myservo = servo.Servo(pca.channels[6], actuation_range=180, min_pulse=720, max_pulse=2550)
-    myservo.angle = 0
-    sleep(1)
-    myservo.angle = 90
-    sleep(1)
-    myservo.angle = 180
-    sleep(1)
-    assert 175 < myservo.angle < 181
-    myservo.angle = 90
-
-def test_servo_raw_mg996r_raw():
-    from adafruit_motor import servo
-    myservo = servo.Servo(pca.channels[2], actuation_range=180, min_pulse=625, max_pulse=2650)
     myservo.angle = 0
     sleep(1)
     myservo.angle = 90
