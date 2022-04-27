@@ -86,13 +86,17 @@ class MotorController():
       self.set_motor(ServoDriverChannel.M3, Pin.MD2_IN1, Pin.MD2_IN2, dc, rotation_directions[2])
       self.set_motor(ServoDriverChannel.M4, Pin.MD2_IN3, Pin.MD2_IN4, dc, rotation_directions[3])
 
+   def stop_motor(self, channel: ServoDriverChannel):
+      self.set_motor_duty_cicle(channel, 0)
+
+   def stop_all_motors(self):
+      self.stop_motor(ServoDriverChannel.M1)
+      self.stop_motor(ServoDriverChannel.M2)
+      self.stop_motor(ServoDriverChannel.M3)
+      self.stop_motor(ServoDriverChannel.M4)
+
    def dispatch_all(self):
       gpio = self.gpio
-      # set duty cicle to 0 on pca9685
-      self.pca.channels[ServoDriverChannel.M1.value].duty_cycle = 0
-      self.pca.channels[ServoDriverChannel.M2.value].duty_cycle = 0
-      self.pca.channels[ServoDriverChannel.M3.value].duty_cycle = 0
-      self.pca.channels[ServoDriverChannel.M4.value].duty_cycle = 0
       # set gpio's to low for motor drivers
       # motor driver 1
       gpio.set_signal_state(Pin.MD1_IN1, PinSignalState.LOW)
