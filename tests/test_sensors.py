@@ -28,7 +28,7 @@ def test_light_sensor():
 def test_uv_sensor():
     uv_sensor = LTR390(address=0x53, bus=3)
     result = uv_sensor.getUV()
-    assert 0 <= result < 5
+    assert 0 <= result
 
 def test_motion_sensor():
     motion_sensor = ICM20948(address=0x68, bus=3)
