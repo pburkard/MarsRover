@@ -12,6 +12,7 @@ class MotorController():
       self.logger = logginghelper.get_logger('MotorController')
       self.pca = pca9685
       self.gpio = gpio
+      self.motors_enabled = True
    
    def set_gpio_motor_driver(self, rotation_direction: RotationDirection, motordriver_IN_1:Pin, motordriver_IN_2:Pin):
       # open output from gpio's for direction on motor driver boards
@@ -33,8 +34,9 @@ class MotorController():
 
    def set_motor(self, channel: ServoDriverChannel, motordriver_IN_1:Pin, 
       motordriver_IN_2:Pin, dc: int, rotation_direction: RotationDirection):
-      self.set_motor_duty_cicle(channel, dc)
-      self.set_gpio_motor_driver(rotation_direction, motordriver_IN_1, motordriver_IN_2)
+      if self.motors_enabled:
+         self.set_motor_duty_cicle(channel, dc)
+         self.set_gpio_motor_driver(rotation_direction, motordriver_IN_1, motordriver_IN_2)
 
    def get_rotation_direction(self, wheelposition:WheelPosition, drivedirection:DriveDirection):
       rotation_direction_m1 = RotationDirection.NEGATIVE

@@ -145,8 +145,10 @@ class MarsRover():
 
     def setwheelposition(self, position: WheelPosition):
         if not position == self.wheel_position:
+            self.motorcontroller.motors_enabled = False
             self.servocontroller.set_drive_servos(position)
             self.wheel_position = position
+            self.motorcontroller.motors_enabled = True
 
     def start_drive(self, duration: float = 0):
         if self.current_speed == 0:
