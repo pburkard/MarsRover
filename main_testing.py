@@ -80,7 +80,7 @@ def show_off():
     sleep(0.5)
     rover.front_camera.point(90)
 
-def drive_parkour_1():
+def drive_course_1():
     rover.distance_measure_start()
     rover.drive_speed = 0.8
     rover.start_drive()
