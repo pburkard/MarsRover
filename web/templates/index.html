@@ -8,6 +8,7 @@
             // ON LOAD
             $(function () {
                 getSensorMeasures();
+                getDriveSpeed();
                 initRefresh(refreshTime);
             });
 
@@ -39,6 +40,20 @@
                 });
             }
 
+            function getDriveSpeed(){
+                $.ajax({
+                    type: "GET",
+                    url: $SCRIPT_ROOT + "/get_speed/",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        var speed = Math.round(data * 100);
+                        document.getElementById("speedInput").value = speed;
+                        $("#driveSpeedConfig").text(speed);
+                        $('#driveSpeed').text(speed);
+                    }
+                });
+            }
+
             // function getMotionMeasures(){
             //     $.ajax({
             //         type: "GET",
@@ -58,7 +73,7 @@
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         $('#currentSpeed').text(data.current_speed * 100);
-                        $('#driveSpeed').text(data.drive_speed * 100 + ' %');
+                        // $('#driveSpeed').text(data.drive_speed * 100 + ' %');
                         if(data.front_distance == 0.0){
                             $('#frontDistance').text('sensor turned off');
                         } else {
@@ -322,7 +337,7 @@
     </br>
     <div class="slidecontainer">
         <p>Drive Speed: <span id="driveSpeedConfig">30</span> %</p>
-        <input type="range"  min="1" max="100" value="30" class="slider" id="speedInput">
+        <input type="range"  min="1" max="100" value="1" class="slider" id="speedInput">
     </div>
     </br>
     <div class="text-center">
@@ -394,8 +409,10 @@
 <script>
     var slider = document.getElementById("speedInput");
     var value = slider.value;
+    
     slider.onchange = function() {
         keyup("/set_speed/" + this.value);
+        $('#driveSpeed').text(this.value);
     }
     slider.oninput = function() {
         $("#driveSpeedConfig").text(this.value);

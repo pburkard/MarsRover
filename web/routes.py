@@ -53,7 +53,7 @@ def stop():
     return jsonify(ret_data)
 
 @app.route('/wheel_position/<position>', methods=['POST'])
-def wheelposition(position):
+def setwheelposition(position):
     wheelposition: WheelPosition = WheelPosition[position]
     rover.setwheelposition(wheelposition)
     ret_data = {"value": f"{wheelposition.name} wheel position"}
@@ -96,3 +96,7 @@ def set_speed(speed):
     rover.drive_speed = new_speed
     ret_data = {"value": f"set speed to {new_speed}"}
     return jsonify(ret_data)
+
+@app.route('/get_speed/', methods=['GET'])
+def get_speed():
+    return jsonify(rover.drive_speed)
