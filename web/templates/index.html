@@ -133,19 +133,19 @@
                         keyup("/wheel_position/CIRCULAR");
                         break;
                     case "a":
-                        keyup("/point_front_camera/0");
+                        keyup("/point_front_camera/180");
                         break;
                     case "s":
-                        keyup("/point_front_camera/45");
+                        keyup("/point_front_camera/135");
                         break;
                     case "d":
                         keyup("/point_front_camera/90");
                         break;
                     case "f":
-                        keyup("/point_front_camera/135");
+                        keyup("/point_front_camera/45");
                         break;
                     case "g":
-                        keyup("/point_front_camera/180");
+                        keyup("/point_front_camera/0");
                         break;
                     case "q":
                         getSensorMeasures();
@@ -321,8 +321,8 @@
     <p id="motion"></p>
     </br>
     <div class="slidecontainer">
-        <p>Drive Speed: <span id="driveSpeedConfig">60</span> %</p>
-        <input type="range"  min="1" max="100" value="60" class="slider" id="speedInput">
+        <p>Drive Speed: <span id="driveSpeedConfig">30</span> %</p>
+        <input type="range"  min="1" max="100" value="30" class="slider" id="speedInput">
     </div>
     </br>
     <div class="text-center">

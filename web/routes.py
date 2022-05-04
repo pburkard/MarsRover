@@ -62,7 +62,7 @@ def wheelposition(position):
 @app.route('/point_front_camera/<degree>', methods=['POST'])
 def point_front_camera(degree):
     todegree: int = int(degree)
-    rover.servocontroller.CS1.angle = degree
+    rover.servocontroller.CS1.angle = todegree
     ret_data = {"value": f"point camera to {todegree}"}
     return jsonify(ret_data)
 
