@@ -31,6 +31,7 @@ root_logger.addHandler(fh)
 try:
     root_logger.critical('START')
     rover.take_default_position()
+    rover.drive_speed = 0.3
     # run flask app
     app.run(host='0.0.0.0', port=8181)
 except KeyboardInterrupt:
